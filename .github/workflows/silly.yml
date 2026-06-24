@@ -1,0 +1,23 @@
+name: Useless Moo Optimizer
+
+on:
+  push:
+    branches: [ "**" ]
+  workflow_dispatch:
+
+jobs:
+  moo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Say moo
+        run: |
+          sudo apt-get install -y cowsay > /dev/null 2>&1
+          echo "Moo! PR received. Running heavy optimization..."
+          sleep 2
+          echo "Analyzing code complexity..."
+          sleep 1
+          echo "Running quantum tensor compiler..."
+          sleep 1
+          echo "Done! Your code is now 0% more optimized."
+          cowsay -f tux "Moo"
