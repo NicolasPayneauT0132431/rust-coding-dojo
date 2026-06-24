@@ -96,25 +96,8 @@ function renderKataMarkdown(markdown: string): string {
   }
 }
 
-function summarizeKataMarkdown(markdown: string, maxLen = 340): string {
-  const plain = markdown
-    .replace(/```[\s\S]*?```/g, ' ')
-    .replace(/`([^`]+)`/g, '$1')
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
-    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
-    .replace(/^\s{0,3}#{1,6}\s+/gm, '')
-    .replace(/^\s*[-*+]\s+/gm, '')
-    .replace(/^\s*\d+\.\s+/gm, '')
-    .replace(/[>*_~]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim()
-
-  if (plain.length <= maxLen) return plain
-  return `${plain.slice(0, maxLen).trimEnd()}…`
-}
-
 export function KataScreen() {
-  const { progress, currentKataId, setCurrentKata, completeKata, setScreen } = useApp()
+  const { progress, currentKataId, completeKata } = useApp()
   const kata = getKataById(currentKataId) ?? KATAS[0]
   const initialCode = loadSavedCode(kata.id, kata.starterCode)
 
@@ -356,9 +339,6 @@ export function KataScreen() {
     diagnosticsRef.current = []
   }, [kata.id, kata.starterCode])
 
-  const passCount = tests.filter(t => t.pass).length
-  const testColor = tests.length === 0 ? '#7f9cc4' : passCount === tests.length ? '#8af0c0' : passCount === 0 ? '#7f9cc4' : '#ffd08a'
-
   function renderMarkdown(text: string, role: string): string {
     if (role === 'user') return escapeHtml(text)
     try {
@@ -381,78 +361,21 @@ export function KataScreen() {
 
   const difficultyColor = { facile: '#8af0c0', moyen: '#ffd08a', difficile: '#ff8a5c', expert: '#c9b6ff' }[kata.difficulty]
   const difficultyBg = { facile: 'rgba(74,222,128,.12)', moyen: 'rgba(255,194,75,.12)', difficile: 'rgba(255,138,92,.12)', expert: 'rgba(167,139,250,.12)' }[kata.difficulty]
-  const kataPreview = summarizeKataMarkdown(kata.description)
-
-  const nextKata = KATAS.find(k => k.number === kata.number + 1)
 
   return (
     <div className="kata-screen">
-      {/* Brief + tests */}
-      <div className="kata-brief">
-        <div className="kata-tags">
-          <span className="tag" style={{ color: difficultyColor, background: difficultyBg }}>● {kata.difficulty.charAt(0).toUpperCase() + kata.difficulty.slice(1)}</span>
-          <span className="tag" style={{ color: '#9fd0ff', background: 'rgba(61,155,255,.14)' }}>{kata.concept}</span>
-          <span className="tag" style={{ color: '#ffd08a', background: 'rgba(255,194,75,.12)' }}>+{kata.xpReward} XP</span>
-        </div>
-
-        <div>
-          <h2 className="kata-title">{kata.title}</h2>
-          <div className="kata-subtitle">{kata.titleEn} · Kata {kata.number}/{kata.total}</div>
-        </div>
-
-        <p className="kata-desc">{kataPreview}</p>
-
-        <button
-          className="btn-ghost"
-          style={{ alignSelf: 'flex-start' }}
-          onClick={() => setShowKataModal(true)}
-        >
-          📘 Lire les consignes complètes
-        </button>
-
-        <div className="kata-tests-panel">
-          <div className="kata-tests-header">
-            <span className="mono-label">Tests</span>
-            <span style={{ color: testColor, fontWeight: 800, fontSize: 13 }}>
-              {ran ? `${passCount} / ${kata.tests.length}` : '— / ' + kata.tests.length}
-            </span>
-          </div>
-
-          {ran ? (
-            <div className="test-list">
-              {tests.map(t => (
-                <div key={t.name} className="test-row" style={{ color: t.pass ? '#8af0c0' : '#ff8a5c' }}>
-                  <span>{t.pass ? '✓' : '✗'}</span>
-                  <span>{t.name}</span>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="kata-test-hint">Clique sur <b style={{ color: '#9fd0ff' }}>▶ Exécuter</b> pour comparer ta sortie avec la solution.</p>
-          )}
-        </div>
-
-        {progress.katasCompleted.includes(kata.id) && (
-          <div className="kata-completed-badge">
-            ✅ Kata complété ! +{kata.xpReward} XP engrangés
-          </div>
-        )}
-
-        {nextKata && progress.katasCompleted.includes(kata.id) && (
-          <button
-            className="btn btn--primary"
-            style={{ width: '100%', marginTop: 8 }}
-            onClick={() => setCurrentKata(nextKata.id)}
-          >
-            Kata suivant → {nextKata.title}
-          </button>
-        )}
-      </div>
-
       {/* Editor */}
         <div className="kata-editor">
           <div className="editor-toolbar">
           <span className="editor-tab">main.rs</span>
+            <div className="kata-toolbar-title-wrap">
+              <div className="kata-toolbar-title">{kata.title}</div>
+              <div className="kata-tags kata-tags--toolbar">
+                <span className="tag" style={{ color: difficultyColor, background: difficultyBg }}>● {kata.difficulty.charAt(0).toUpperCase() + kata.difficulty.slice(1)}</span>
+                <span className="tag" style={{ color: '#9fd0ff', background: 'rgba(61,155,255,.14)' }}>{kata.concept}</span>
+                <span className="tag" style={{ color: '#ffd08a', background: 'rgba(255,194,75,.12)' }}>+{kata.xpReward} XP</span>
+              </div>
+            </div>
             <button className="btn-ghost" onClick={() => setShowKataModal(true)}>📘 Consignes</button>
             <button className="btn-ghost" onClick={reset}>↺ Réinitialiser</button>
             <div style={{ display: 'flex', gap: 8, marginLeft: 'auto' }}>
