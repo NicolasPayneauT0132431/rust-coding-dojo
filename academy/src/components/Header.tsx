@@ -43,9 +43,6 @@ export function Header() {
       </nav>
 
       <div className="header-right">
-        <span className="streak-badge">
-          🔥 {progress.streak}
-        </span>
 
         <div className="xp-bar-container">
           <div className="xp-bar-labels">
