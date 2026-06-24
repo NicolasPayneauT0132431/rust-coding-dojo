@@ -8,3 +8,4 @@ academy/dist
 academy/node_modules
 poc_wllama/node_modules/
 poc_wllama/dist/
+academy/.vite/

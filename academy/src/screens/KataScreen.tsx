@@ -14,6 +14,7 @@ import type { Diagnostic } from '@codemirror/lint'
 import { compileRust, diagnosticsFromRustStderr } from '../editor/rustCompiler'
 import type { DownloadProgress } from '../llm/localWllama'
 import { marked } from 'marked'
+import DOMPurify from 'dompurify'
 
 const CODE_LS_PREFIX = 'rust-dojo-kata-code:'
 const SOL_CACHE_PREFIX = 'rust-dojo-solution-out:'
@@ -109,6 +110,7 @@ export function KataScreen() {
   const alreadyCompleted = useRef(false)
   const [isCompiling, setIsCompiling] = useState(false)
   const [dlProgress, setDlProgress] = useState<DownloadProgress>({ phase: 'idle', loaded: 0, total: 0, pct: 0 })
+  const [useKataContext, setUseKataContext] = useState(true)
 
   // Reset when kata changes
   useEffect(() => {
@@ -307,9 +309,9 @@ export function KataScreen() {
     setChat(prev => [...prev, { role: 'ferris', text: '', timestamp: replyMsgId }])
     await askFerris(v, code, kata.title, chat, buildFerrisContext(), (token) => {
       setChat(prev => prev.map(m => m.timestamp === replyMsgId ? { ...m, text: m.text + token } : m))
-    })
+    }, !useKataContext)
     setIsReplying(false)
-  }, [input, code, kata.title, chat, buildFerrisContext])
+  }, [input, code, kata.title, chat, buildFerrisContext, useKataContext])
 
   const reset = useCallback(() => {
     if (editorViewRef.current) {
@@ -329,8 +331,18 @@ export function KataScreen() {
   const passCount = tests.filter(t => t.pass).length
   const testColor = tests.length === 0 ? '#7f9cc4' : passCount === tests.length ? '#8af0c0' : passCount === 0 ? '#7f9cc4' : '#ffd08a'
 
-  function renderMarkdown(text: string): string {
-    try { return marked.parse(text, { async: false }) as string } catch { return text }
+  function renderMarkdown(text: string, role: string): string {
+    if (role === 'user') return escapeHtml(text)
+    try {
+      const html = marked.parse(text, { async: false }) as string
+      return DOMPurify.sanitize(html)
+    } catch {
+      return escapeHtml(text)
+    }
+  }
+
+  function escapeHtml(text: string): string {
+    return text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;')
   }
 
   function getBubbleClass(role: string) {
@@ -446,7 +458,7 @@ export function KataScreen() {
         <div className="chat-messages">
           {chat.map((msg, i) => (
             <div key={i} className={getBubbleClass(msg.role)}>
-              <div className="bubble-content" dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.text) }} />
+              <div className="bubble-content" dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.text, msg.role) }} />
             </div>
           ))}
           {isReplying && (
@@ -458,6 +470,10 @@ export function KataScreen() {
         </div>
 
         <div className="ferris-actions">
+          <label style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6, fontSize: 11, color: 'var(--text-dim)', cursor: 'pointer', userSelect: 'none' }}>
+            <input type="checkbox" checked={useKataContext} onChange={e => setUseKataContext(e.target.checked)} disabled={!modelReady} style={{ accentColor: 'var(--blue)' }} />
+            Contexte kata
+          </label>
           <div className="quick-actions">
             <button className="quick-btn quick-btn--yellow" onClick={hint}>💡 Indice +1</button>
           </div>
