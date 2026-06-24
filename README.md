@@ -82,7 +82,7 @@ cargo clippy --workspace
 cargo fmt --all
 ```
 
-## CI Quality and Cleanup Automation
+## CI Quality Automation
 
 ### Automatic checks (run automatically)
 
@@ -91,22 +91,11 @@ The **CI** workflow is activated automatically on:
 - push to `main`
 - pull requests targeting `main`
 
-It enforces non-mutating quality gates:
+It enforces quality gates:
 
 - `cargo fmt --all --check`
 - `cargo clippy --workspace --exclude ownership-borrowing -- -D warnings`
 - `cargo doc --workspace --no-deps --exclude ownership-borrowing` with `RUSTDOCFLAGS="-D warnings"`
-
-### Manual cleanup (run on demand)
-
-The **Cleanup** workflow is manual (`workflow_dispatch`), activated from GitHub UI:
-
-1. Open **Actions > Cleanup**
-2. Run workflow and choose `target_branch` (default: `main`)
-3. The workflow:
-   - runs `cargo fmt --all`
-   - runs `.github/scripts/cleanup-files.ps1` (safe file cleanup)
-   - opens or updates an automated cleanup PR (`chore/automated-cleanup`)
 
 ## Contributing
 
