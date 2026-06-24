@@ -116,17 +116,26 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   const setFirstName = useCallback((name: string) => {
     const trimmed = name.trim()
+    const isNathan = trimmed.toLowerCase() === 'nathan'
+
     setProgress(p => {
       let updated: UserProgress = { ...p, firstName: trimmed }
-      if (trimmed.toLowerCase() === 'nathan') {
+      if (isNathan) {
         const allIds = KATAS.map(k => k.id)
         updated = { ...updated, katasCompleted: allIds, graalUnlocked: true }
       }
       saveProgress(updated)
       return updated
     })
+
+    if (isNathan) {
+      const allIds = KATAS.map(k => k.id)
+      if (allIds.length > 0) setCurrentKataIdState(allIds[0])
+      setScreenState('graal')
+    }
+
     setShowOnboarding(false)
-  }, [])
+  }, [setCurrentKataIdState, setScreenState])
 
   return (
     <AppContext.Provider value={{
