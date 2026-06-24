@@ -119,6 +119,7 @@ export function KataScreen() {
   const alreadyCompleted = useRef(false)
   const [isCompiling, setIsCompiling] = useState(false)
   const [dlProgress, setDlProgress] = useState<DownloadProgress>({ phase: 'idle', loaded: 0, total: 0, pct: 0 })
+  const [useKataContext, setUseKataContext] = useState(true)
   const [showKataModal, setShowKataModal] = useState(true)
 
   // Reset when kata changes
