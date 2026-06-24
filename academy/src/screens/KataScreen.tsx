@@ -119,7 +119,6 @@ export function KataScreen() {
   const alreadyCompleted = useRef(false)
   const [isCompiling, setIsCompiling] = useState(false)
   const [dlProgress, setDlProgress] = useState<DownloadProgress>({ phase: 'idle', loaded: 0, total: 0, pct: 0 })
-  const [useKataContext, setUseKataContext] = useState(true)
   const [showKataModal, setShowKataModal] = useState(true)
 
   // Reset when kata changes
@@ -320,9 +319,9 @@ export function KataScreen() {
     setChat(prev => [...prev, { role: 'ferris', text: '', timestamp: replyMsgId }])
     await askFerris(v, code, kata.title, chat, buildFerrisContext(), (token) => {
       setChat(prev => prev.map(m => m.timestamp === replyMsgId ? { ...m, text: m.text + token } : m))
-    }, !useKataContext)
+    }, true)
     setIsReplying(false)
-  }, [input, code, kata.title, chat, buildFerrisContext, useKataContext])
+  }, [input, code, kata.title, chat, buildFerrisContext])
 
   const reset = useCallback(() => {
     if (editorViewRef.current) {
@@ -428,10 +427,6 @@ export function KataScreen() {
         </div>
 
         <div className="ferris-actions">
-          <label style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6, fontSize: 11, color: 'var(--text-dim)', cursor: 'pointer', userSelect: 'none' }}>
-            <input type="checkbox" checked={useKataContext} onChange={e => setUseKataContext(e.target.checked)} disabled={!modelReady} style={{ accentColor: 'var(--blue)' }} />
-            Contexte kata
-          </label>
           <div className="quick-actions">
             <button className="quick-btn quick-btn--yellow" onClick={hint}>💡 Indice +1</button>
           </div>

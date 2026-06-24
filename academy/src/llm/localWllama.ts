@@ -70,8 +70,8 @@ export async function generateLocalFerrisReply(userMessage: string, context: Fer
       { role: 'user', content: prompt },
     ],
     stream: true,
-    max_tokens: 300,
-    temperature: 0.4,
+    max_tokens: 10000,
+    temperature: 0,
     top_p: 0.9,
     top_k: 40,
     onData: (chunk) => {
@@ -168,9 +168,6 @@ Titre : ${context.kataTitle}
 Concept : ${context.kataConcept ?? 'non renseigné'}
 Difficulté : ${context.kataDifficulty ?? 'non renseignée'}
 
-Description :
-${stripHtml(context.kataDescription ?? 'Non renseignée')}
-
 Code actuel :
 \`\`\`rust
 ${context.code}
@@ -204,10 +201,6 @@ function formatTests(tests: Array<{ name: string; pass: boolean }>) {
 function formatOutput(output: Array<{ text: string }>) {
   if (output.length === 0) return 'Aucune sortie disponible.'
   return output.map((line) => line.text).join('\n')
-}
-
-function stripHtml(value: string) {
-  return value.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
 }
 
 function getThreadCount() {
