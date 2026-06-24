@@ -14,6 +14,7 @@ import type { Diagnostic } from '@codemirror/lint'
 import { compileRust, diagnosticsFromRustStderr } from '../editor/rustCompiler'
 import type { DownloadProgress } from '../llm/localWllama'
 import { marked } from 'marked'
+import DOMPurify from 'dompurify'
 
 const CODE_LS_PREFIX = 'rust-dojo-kata-code:'
 const SOL_CACHE_PREFIX = 'rust-dojo-solution-out:'
@@ -330,8 +331,18 @@ export function KataScreen() {
   const passCount = tests.filter(t => t.pass).length
   const testColor = tests.length === 0 ? '#7f9cc4' : passCount === tests.length ? '#8af0c0' : passCount === 0 ? '#7f9cc4' : '#ffd08a'
 
-  function renderMarkdown(text: string): string {
-    try { return marked.parse(text, { async: false }) as string } catch { return text }
+  function renderMarkdown(text: string, role: string): string {
+    if (role === 'user') return escapeHtml(text)
+    try {
+      const html = marked.parse(text, { async: false }) as string
+      return DOMPurify.sanitize(html)
+    } catch {
+      return escapeHtml(text)
+    }
+  }
+
+  function escapeHtml(text: string): string {
+    return text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;')
   }
 
   function getBubbleClass(role: string) {
@@ -447,7 +458,7 @@ export function KataScreen() {
         <div className="chat-messages">
           {chat.map((msg, i) => (
             <div key={i} className={getBubbleClass(msg.role)}>
-              <div className="bubble-content" dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.text) }} />
+              <div className="bubble-content" dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.text, msg.role) }} />
             </div>
           ))}
           {isReplying && (
