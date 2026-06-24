@@ -37,12 +37,6 @@ Feel free to open an issue if you wish to add a new one, update an existing one 
 
 ![Repository Summary](repo_summary.png)
 
-## Demo
-
-<p align="center">
-  <img src="demo.gif" alt="Academy Demo" />
-</p>
-
 ## Rust Katas
 
 A code **kata** is a software development exercise in which the focus is not on solving a task or problem, but on **learning new skills and developing successful routines**. For each code kata, **several solutions** have to be found in order to **learn from mistakes, gain experience** and develop even better solutions.
@@ -76,23 +70,29 @@ The kata may consist in a single program with gaps, then we put the program sour
 If the kata consists in several small exercise programs, we put all the exercises in a `src/bin` folder at kata's root.
 We can just run the exercise by calling `cargo run --bin <exercise_n>` to run the targeted exercise, without needing the others to compile, or to comment anything.
 
-## Academy — Interactive Learning Platform
+## Academy — Interactive Learning Platform 🚀
 
 The [academy](./academy) is the browser learning app for this repository.
 It turns katas into an interactive Rust dojo with guided progression, a built-in editor, execution feedback, and an AI mentor.
 
-### What you get
+### 🎬 Demo
 
-- **Onboarding + progression**: first-run onboarding, local profile, XP, levels, streak, badges, and per-kata progression persisted locally.
-- **Parcours-first flow**: learners start on the parcours page, pick a kata, then move to the editor.
-- **Kata execution pipeline**: user code is compiled/executed through Rust Playground API and validated against expected behavior.
-- **Result gate quality**: kata success is based on runtime behavior checks (including output comparison against solution output cache), not only placeholder removal.
-- **Full kata corpus**: academy data is generated from the repository katas (`starter`, `structure`, `advanced`) and includes full README-based instructions.
-- **Instruction UX**: full instructions open in a modal (Markdown interpreted to HTML), with quick re-open from the editor toolbar.
-- **Ferris mentor (local LLM)**: contextual chat assistant powered by `@wllama/wllama`, with streaming answers and Markdown rendering.
-- **PWA support**: installable app with service-worker caching.
+<p align="center">
+  <img src="demo.gif" alt="Academy Demo" />
+</p>
 
-### Academy stack
+### ✨ What you get
+
+- **🧭 Onboarding + progression**: first-run onboarding, local profile, XP, levels, streak, badges, and per-kata progression persisted locally.
+- **🗺️ Parcours-first flow**: learners start on the parcours page, pick a kata, then move to the editor.
+- **⚙️ Kata execution pipeline**: user code is compiled/executed through Rust Playground API and validated against expected behavior.
+- **✅ Result gate quality**: kata success is based on runtime behavior checks (including output comparison against solution output cache), not only placeholder removal.
+- **📚 Full kata corpus**: academy data is generated from the repository katas (`starter`, `structure`, `advanced`) and includes full README-based instructions.
+- **📘 Instruction UX**: full instructions open in a modal (Markdown interpreted to HTML), with quick re-open from the editor toolbar.
+- **🤖 Ferris mentor (local LLM)**: contextual chat assistant powered by `@wllama/wllama`, with streaming answers and Markdown rendering.
+- **📱 PWA support**: installable app with service-worker caching.
+
+### 🧱 Academy stack
 
 - **Frontend**: React 18 + TypeScript + Vite
 - **Editor**: CodeMirror 6 (Rust language support + diagnostics)
@@ -100,7 +100,7 @@ It turns katas into an interactive Rust dojo with guided progression, a built-in
 - **LLM**: `@wllama/wllama` running in-browser
 - **PWA**: `vite-plugin-pwa`
 
-### Run locally
+### 🛠️ Run locally
 
 ```bash
 cd academy
@@ -109,7 +109,7 @@ npm run dev     # start dev server (http://localhost:5173)
 npm run build   # production build → dist/
 ```
 
-### Data generation
+### 🔄 Data generation
 
 Kata data used by the academy is generated from repository sources:
 
@@ -120,7 +120,7 @@ node tools/generate-katas.cjs
 
 This command updates `academy/src/data/katas.generated.ts` from `katas/**`.
 
-### Notes for contributors
+### 🧑‍💻 Notes for contributors
 
 - If you add/rename kata folders, regenerate academy data before committing.
 - If you modify UI behavior around progression or validation, verify from the parcours screen and one full kata run.
