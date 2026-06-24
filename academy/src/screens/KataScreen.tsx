@@ -111,6 +111,7 @@ export function KataScreen() {
   const [isCompiling, setIsCompiling] = useState(false)
   const [dlProgress, setDlProgress] = useState<DownloadProgress>({ phase: 'idle', loaded: 0, total: 0, pct: 0 })
   const [useKataContext, setUseKataContext] = useState(true)
+  const [showKataModal, setShowKataModal] = useState(true)
 
   // Reset when kata changes
   useEffect(() => {
@@ -122,6 +123,7 @@ export function KataScreen() {
     setHintIndex(0)
     diagnosticsRef.current = []
     alreadyCompleted.current = progress.katasCompleted.includes(kata.id)
+    setShowKataModal(true)
     setChat([{ role: 'ferris', text: `Kata : "${kata.title}". ${kata.difficulty === 'facile' ? 'Un kata de niveau facile — bonne chance !' : 'Un challenge qui va muscler ton ownership !'}`, timestamp: Date.now() }])
   }, [kata.id])
 
@@ -416,9 +418,10 @@ export function KataScreen() {
       </div>
 
       {/* Editor */}
-      <div className="kata-editor">
-        <div className="editor-toolbar">
+        <div className="kata-editor">
+          <div className="editor-toolbar">
           <span className="editor-tab">main.rs</span>
+            <button className="btn-ghost" onClick={() => setShowKataModal(true)}>📘 Consignes</button>
             <button className="btn-ghost" onClick={reset}>↺ Réinitialiser</button>
             <div style={{ display: 'flex', gap: 8, marginLeft: 'auto' }}>
             <button className="btn btn--run" onClick={run} disabled={isCompiling}>{isCompiling ? 'Compiling…' : '▶ Exécuter'}</button>
@@ -490,6 +493,44 @@ export function KataScreen() {
           </div>
         </div>
       </div>
+
+      {showKataModal && (
+        <div className="kata-modal-overlay" onClick={() => setShowKataModal(false)}>
+          <div className="kata-modal" onClick={e => e.stopPropagation()}>
+            <div className="kata-modal-header">
+              <div>
+                <div className="kata-tags" style={{ marginBottom: 8 }}>
+                  <span className="tag" style={{ color: difficultyColor, background: difficultyBg }}>● {kata.difficulty.charAt(0).toUpperCase() + kata.difficulty.slice(1)}</span>
+                  <span className="tag" style={{ color: '#9fd0ff', background: 'rgba(61,155,255,.14)' }}>{kata.concept}</span>
+                  <span className="tag" style={{ color: '#ffd08a', background: 'rgba(255,194,75,.12)' }}>+{kata.xpReward} XP</span>
+                </div>
+                <h2 className="kata-title" style={{ marginBottom: 6 }}>{kata.title}</h2>
+                <div className="kata-subtitle">{kata.titleEn} · Kata {kata.number}/{kata.total}</div>
+              </div>
+              <button className="btn-ghost" onClick={() => setShowKataModal(false)}>✕ Fermer</button>
+            </div>
+
+            <div className="kata-modal-body">
+              <div className="kata-desc" dangerouslySetInnerHTML={{ __html: kata.description }} />
+
+              <div className="kata-tests-panel" style={{ marginTop: 14 }}>
+                <div className="kata-tests-header">
+                  <span className="mono-label">Tests attendus</span>
+                  <span style={{ color: '#7f9cc4', fontWeight: 700, fontSize: 12 }}>{kata.tests.length}</span>
+                </div>
+                <div className="test-list">
+                  {kata.tests.map(t => (
+                    <div key={t.name} className="test-row" style={{ color: '#9db6d6' }}>
+                      <span>•</span>
+                      <span>{t.description || t.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

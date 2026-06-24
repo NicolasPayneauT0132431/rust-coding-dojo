@@ -328,6 +328,44 @@ p { margin: 0; }
   overflow-y: auto;
 }
 
+.kata-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 15, 27, 0.84);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 960;
+  padding: 24px;
+}
+
+.kata-modal {
+  width: min(920px, 96vw);
+  max-height: 88vh;
+  background: linear-gradient(150deg, #0c172b 0%, #0a1424 100%);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.kata-modal-header {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.kata-modal-body {
+  padding: 18px 20px 22px;
+  overflow-y: auto;
+}
+
 .kata-tags { display: flex; gap: 7px; flex-wrap: wrap; }
 .tag {
   font: 800 11px/1 var(--font-sans);
@@ -1285,6 +1323,9 @@ p { margin: 0; }
   .ferris-panel { max-height: 400px; border-left: none; border-top: 1px solid var(--border); }
   .dash-grid { grid-template-columns: 1fr; }
   .forge-agents-grid { grid-template-columns: 1fr 1fr; }
+  .kata-modal-overlay { padding: 10px; }
+  .kata-modal { width: 100%; max-height: 92vh; }
+  .kata-modal-header, .kata-modal-body { padding: 14px; }
 }
 
 @media (max-width: 600px) {
