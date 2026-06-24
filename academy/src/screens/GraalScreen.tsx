@@ -1,36 +1,16 @@
-import { useState } from 'react'
 import { useApp } from '../store/AppContext'
 import { GRAAL_CHAPTERS } from '../data/gamification'
+import { KATAS } from '../data/katas'
 
 export function GraalScreen() {
-  const { progress, unlockGraal } = useApp()
-  const [claimed, setClaimed] = useState(false)
+  const { progress } = useApp()
+
+  const totalKatas = KATAS.length
+  const completedKatas = progress.katasCompleted.filter(id => KATAS.some(kata => kata.id === id)).length
+  const allCompleted = totalKatas > 0 && completedKatas === totalKatas
 
   const questDone = GRAAL_CHAPTERS.filter(c => c.done).length
   const questPct = Math.round(questDone / GRAAL_CHAPTERS.length * 100)
-
-  const claimStack = () => {
-    setClaimed(true)
-    const manifest = {
-      name: 'ferris-forge',
-      version: '1.0.0',
-      agents: [
-        { id: 'quality', name: 'Agent Qualité', tool: 'sonarqube', trigger: 'pr' },
-        { id: 'lint', name: 'Agent Lint', tools: ['clippy', 'rustfmt'], trigger: 'push' },
-        { id: 'cicd', name: 'Agent CI/CD', platforms: ['github-actions', 'gitlab'], trigger: 'push' },
-        { id: 'deploy', name: 'Agent Déploiement', targets: ['cross-compile', 'docker', 'crates-io'], trigger: 'tag' },
-        { id: 'security', name: 'Agent Sécurité', tools: ['cargo-audit', 'cargo-deny'], trigger: 'schedule' }
-      ],
-      interfaces: ['mcp', 'cli', 'rest-api']
-    }
-    const blob = new Blob([JSON.stringify(manifest, null, 2)], { type: 'application/json' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = 'ferris-forge.json'
-    a.click()
-    URL.revokeObjectURL(url)
-  }
 
   if (progress.graalUnlocked) {
     return (
@@ -76,15 +56,8 @@ export function GraalScreen() {
           </div>
 
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginTop: 32, flexWrap: 'wrap' }}>
-            <button className="btn btn--primary" onClick={claimStack}>🔌 Connecter à mon harness</button>
-            <button className="btn btn--outline" onClick={claimStack}>⬇ Télécharger le manifeste (JSON)</button>
+            <a className="btn btn--primary" href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/tree/main/rewards/harness" target="_blank" rel="noopener noreferrer">Récupérer la config Harness</a>
           </div>
-
-          {claimed && (
-            <div className="claim-success pop">
-              ✓ Manifeste <code>ferris-forge.json</code> prêt — colle-le dans ton harness pour activer les 5 agents.
-            </div>
-          )}
         </div>
       </div>
     )
@@ -149,14 +122,8 @@ export function GraalScreen() {
           ))}
         </div>
 
-        <div style={{ marginTop: 32, display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
-          <button
-            className="btn btn--golden"
-            onClick={() => unlockGraal()}
-          >
-            ⚔️ Relever la dernière épreuve
-          </button>
-          <span style={{ fontSize: 11, color: '#6f8cb4' }}>(démo — déclenche la révélation de la surprise)</span>
+        <div style={{ marginTop: 32 }}>
+          <span style={{ fontSize: 13, color: '#6f8cb4' }}>Complète tous les katas pour débloquer la récompense finale.</span>
         </div>
       </div>
     </div>
