@@ -42,3 +42,4 @@ Run this instruction at the end of any change that can affect documentation, inc
 - Use a docs-focused branch name (example: `docs/sync-<topic>`).
 - Use a docs-focused PR title (example: `docs: sync README with CI behavior`).
 - Include drift evidence and updated files in PR body.
+- Reuse `docs/agent-instructions/docs-sync/PR_TEMPLATE.md` as the PR body checklist.
