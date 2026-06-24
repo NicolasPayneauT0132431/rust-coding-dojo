@@ -9,17 +9,10 @@ Canonical instruction: `docs/agent-instructions/docs-sync/INSTRUCTION.md`
 4. Commit docs updates.
 5. Include docs impact summary in your PR (mixed or docs-only) using `docs/agent-instructions/docs-sync/PR_TEMPLATE.md`.
 
-## Invocation examples
-Use equivalent wording with your tool:
+## Invocation
+Use a generic prompt with your agent:
 
-- **Copilot CLI-style prompt**
-  - "Run docs sync using `docs/agent-instructions/docs-sync/INSTRUCTION.md`, update affected docs, and summarize docs impact."
-
-- **OpenCode/OpenClaw-style prompt**
-  - "Follow `docs/agent-instructions/docs-sync/INSTRUCTION.md` to detect and fix documentation drift for this branch."
-
-- **Generic agent prompt**
-  - "Apply the repository docs-sync instruction at `docs/agent-instructions/docs-sync/INSTRUCTION.md` before finalizing."
+- "Apply the repository docs-sync instruction at `docs/agent-instructions/docs-sync/INSTRUCTION.md` before finalizing. Detect and fix documentation drift, then report docs impact."
 
 ## Completion gate (mandatory)
 Before marking work complete, include:
