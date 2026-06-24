@@ -1,6 +1,6 @@
 import { useApp } from '../store/AppContext'
 import type { Screen } from '../types'
-import { getXPProgressInLevel } from '../store/progress'
+import { KATAS } from '../data/katas'
 
 const NAV_ITEMS_BASE: Array<{ key: Screen; icon: string; label: string }> = [
   { key: 'path', icon: '🧭', label: 'Parcours' },
@@ -12,7 +12,9 @@ const NAV_ITEMS_BASE: Array<{ key: Screen; icon: string; label: string }> = [
 
 export function Header() {
   const { progress, screen, setScreen } = useApp()
-  const { current, total, pct } = getXPProgressInLevel(progress.xp)
+  const totalKatas = KATAS.length
+  const completedKatas = progress.katasCompleted.filter(id => KATAS.some(kata => kata.id === id)).length
+  const pct = totalKatas > 0 ? Math.round((completedKatas / totalKatas) * 100) : 0
   const graalIcon = progress.graalUnlocked ? '🏆' : '🎁'
 
   return (
@@ -50,8 +52,8 @@ export function Header() {
 
         <div className="xp-bar-container">
           <div className="xp-bar-labels">
-            <span>Niveau {progress.level}</span>
-            <span className="xp-bar-sub">{current} / {total}</span>
+            <span>Progression</span>
+            <span className="xp-bar-sub">{completedKatas} / {totalKatas}</span>
           </div>
           <div className="xp-bar-track">
             <div
