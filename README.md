@@ -39,7 +39,9 @@ Feel free to open an issue if you wish to add a new one, update an existing one 
 
 ## Demo
 
-![Academy Demo](demo.gif)
+<p align="center">
+  <img src="demo.gif" alt="Academy Demo" />
+</p>
 
 ## Rust Katas
 
