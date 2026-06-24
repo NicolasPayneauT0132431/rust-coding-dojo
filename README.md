@@ -76,7 +76,29 @@ We can just run the exercise by calling `cargo run --bin <exercise_n>` to run th
 
 ## Academy — Interactive Learning Platform
 
-The [academy](./academy) is a React/Vite frontend that gamifies the Rust learning experience: interactive katas with embedded code editor, XP/progression system, quests, and a local Ferris mentor powered by `@wllama/wllama` with rule-based fallback. It works fully client-side with PWA support.
+The [academy](./academy) is the browser learning app for this repository.
+It turns katas into an interactive Rust dojo with guided progression, a built-in editor, execution feedback, and an AI mentor.
+
+### What you get
+
+- **Onboarding + progression**: first-run onboarding, local profile, XP, levels, streak, badges, and per-kata progression persisted locally.
+- **Parcours-first flow**: learners start on the parcours page, pick a kata, then move to the editor.
+- **Kata execution pipeline**: user code is compiled/executed through Rust Playground API and validated against expected behavior.
+- **Result gate quality**: kata success is based on runtime behavior checks (including output comparison against solution output cache), not only placeholder removal.
+- **Full kata corpus**: academy data is generated from the repository katas (`starter`, `structure`, `advanced`) and includes full README-based instructions.
+- **Instruction UX**: full instructions open in a modal (Markdown interpreted to HTML), with quick re-open from the editor toolbar.
+- **Ferris mentor (local LLM)**: contextual chat assistant powered by `@wllama/wllama`, with streaming answers and Markdown rendering.
+- **PWA support**: installable app with service-worker caching.
+
+### Academy stack
+
+- **Frontend**: React 18 + TypeScript + Vite
+- **Editor**: CodeMirror 6 (Rust language support + diagnostics)
+- **Persistence**: IndexedDB + localStorage
+- **LLM**: `@wllama/wllama` running in-browser
+- **PWA**: `vite-plugin-pwa`
+
+### Run locally
 
 ```bash
 cd academy
@@ -84,6 +106,23 @@ npm install     # install dependencies
 npm run dev     # start dev server (http://localhost:5173)
 npm run build   # production build → dist/
 ```
+
+### Data generation
+
+Kata data used by the academy is generated from repository sources:
+
+```bash
+cd academy
+node tools/generate-katas.cjs
+```
+
+This command updates `academy/src/data/katas.generated.ts` from `katas/**`.
+
+### Notes for contributors
+
+- If you add/rename kata folders, regenerate academy data before committing.
+- If you modify UI behavior around progression or validation, verify from the parcours screen and one full kata run.
+- Keep README rendering in modal instruction view Markdown-compatible (headings, lists, code blocks).
 
 The academy is automatically deployed to GitHub Pages on every push to `main` touching `academy/`.
 
