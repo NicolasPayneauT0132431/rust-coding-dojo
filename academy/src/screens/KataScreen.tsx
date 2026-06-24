@@ -87,6 +87,32 @@ function evaluateKataTests(kata: ReturnType<typeof getKataById>, code: string) {
   return { tests, allPass }
 }
 
+function renderKataMarkdown(markdown: string): string {
+  try {
+    const html = marked.parse(markdown, { async: false, breaks: true, gfm: true }) as string
+    return DOMPurify.sanitize(html)
+  } catch {
+    return markdown
+  }
+}
+
+function summarizeKataMarkdown(markdown: string, maxLen = 340): string {
+  const plain = markdown
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/^\s{0,3}#{1,6}\s+/gm, '')
+    .replace(/^\s*[-*+]\s+/gm, '')
+    .replace(/^\s*\d+\.\s+/gm, '')
+    .replace(/[>*_~]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+
+  if (plain.length <= maxLen) return plain
+  return `${plain.slice(0, maxLen).trimEnd()}…`
+}
+
 export function KataScreen() {
   const { progress, currentKataId, setCurrentKata, completeKata, setScreen } = useApp()
   const kata = getKataById(currentKataId) ?? KATAS[0]
@@ -355,6 +381,7 @@ export function KataScreen() {
 
   const difficultyColor = { facile: '#8af0c0', moyen: '#ffd08a', difficile: '#ff8a5c', expert: '#c9b6ff' }[kata.difficulty]
   const difficultyBg = { facile: 'rgba(74,222,128,.12)', moyen: 'rgba(255,194,75,.12)', difficile: 'rgba(255,138,92,.12)', expert: 'rgba(167,139,250,.12)' }[kata.difficulty]
+  const kataPreview = summarizeKataMarkdown(kata.description)
 
   const nextKata = KATAS.find(k => k.number === kata.number + 1)
 
@@ -373,10 +400,15 @@ export function KataScreen() {
           <div className="kata-subtitle">{kata.titleEn} · Kata {kata.number}/{kata.total}</div>
         </div>
 
-        <p
-          className="kata-desc"
-          dangerouslySetInnerHTML={{ __html: kata.description }}
-        />
+        <p className="kata-desc">{kataPreview}</p>
+
+        <button
+          className="btn-ghost"
+          style={{ alignSelf: 'flex-start' }}
+          onClick={() => setShowKataModal(true)}
+        >
+          📘 Lire les consignes complètes
+        </button>
 
         <div className="kata-tests-panel">
           <div className="kata-tests-header">
@@ -511,7 +543,7 @@ export function KataScreen() {
             </div>
 
             <div className="kata-modal-body">
-              <div className="kata-desc" dangerouslySetInnerHTML={{ __html: kata.description }} />
+              <div className="kata-desc kata-desc--markdown" dangerouslySetInnerHTML={{ __html: renderKataMarkdown(kata.description) }} />
 
               <div className="kata-tests-panel" style={{ marginTop: 14 }}>
                 <div className="kata-tests-header">

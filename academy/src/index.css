@@ -394,6 +394,51 @@ p { margin: 0; }
 .kata-desc b { color: #9fd0ff; }
 .kata-desc code { font-family: var(--font-mono); color: #9fd0ff; }
 
+.kata-desc--markdown h1,
+.kata-desc--markdown h2,
+.kata-desc--markdown h3,
+.kata-desc--markdown h4 {
+  margin: 12px 0 8px;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.kata-desc--markdown p {
+  margin: 8px 0;
+}
+
+.kata-desc--markdown ul,
+.kata-desc--markdown ol {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.kata-desc--markdown li {
+  margin: 4px 0;
+}
+
+.kata-desc--markdown pre {
+  background: rgba(3, 8, 16, 0.55);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 10px 12px;
+  overflow-x: auto;
+  margin: 10px 0;
+}
+
+.kata-desc--markdown pre code {
+  color: #c9ddff;
+  font-family: var(--font-mono);
+  white-space: pre;
+}
+
+.kata-desc--markdown blockquote {
+  margin: 10px 0;
+  padding: 8px 12px;
+  border-left: 3px solid #3d9bff;
+  background: rgba(61, 155, 255, 0.08);
+}
+
 .kata-tests-panel {
   background: rgba(8, 19, 32, 0.6);
   border: 1px solid var(--border);

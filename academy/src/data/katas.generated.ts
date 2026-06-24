@@ -11,11 +11,95 @@ export const KATAS: Kata[] = [
     difficulty: 'facile',
     concept: 'bases',
     xpReward: 30,
-    description: `Welcome, brave adventurer, to the land of Rust! Your quest awaits, but before you embark on your journey, you must prove your worth by mastering the fundamentals of Rust programming.
+    description: `# Rustward sword: The Great Programming Quest
+
+Kata for the STARTER package of the Rust coding DOJO
+
+## Level / duration
+
+Beginner / 30 minutes
+
+This kata as a part of the STARTER package targets Rust beginners.
+This kata targets 30 minutes sessions
+
+## Context
+
+Welcome, brave adventurer, to the land of Rust! Your quest awaits, but before you embark on your journey, you must prove your worth by mastering the fundamentals of Rust programming.
+
+Link, a plucky Rustacean, is on a quest to find the legendary treasure hidden deep within the Korok Forest. 
+However, the forest is full of surprises, and Link needs your help to navigate through it.
+
+## Objective
 
 Your mission is to help a quirky character named Link on his epic adventure through the Link Forest and to complete various basic challenges.
+Along the way, you will encounter challenges that require your Rust knowledge of variables, control flows, loops, and functions to overcome.
+Restarting from the ./src/main.rs, try to implement a solution for each challenges.
 
-1. **The Mysterious Variables:**`,
+## Challenges
+
+1. **The Mysterious Variables:**
+   Link needs your help to gather supplies for his journey.
+   
+   _Declare variables to store:_
+   - Link's health (integer)
+   - Link's stamina (float)
+   - The number of treasure chests Link has found (integer)
+   - Whether Link has encountered a friendly NPC (boolean)
+
+2. **Navigating the Forest:**
+   As Link ventures deeper into the forest, he encounters forks in the road.
+
+   _Use control flow to guide Link:_
+   - If Link's health is above 50, he can continue on his journey.
+   - If Link's health is between 25 and 50, he needs to take a break to recover.
+   - If Link's health is below 25, he needs to find a healing potion to replenish his health.
+
+3. **The Enchanted Loop:**
+   Link stumbles upon a clearing where magical creatures dance around a mysterious stone.
+
+   _Use a loop to observe the creatures' movements:_
+   - Write a loop to count from 1 to 10.
+   - For each number, determine whether it's even or odd and describe the magical creature's behavior accordingly.
+
+4. **The Wisdom of Functions:**
+   In the heart of the forest lies the treasure chamber, guarded by a formidable beast.
+
+   _Create a function called \`defeat_beast\` to help Link:_
+   - The function should take Link's health and stamina as parameters.
+   - Inside the function, calculate Link's chances of defeating the beast based on his health and stamina.
+   - Return a message indicating whether Link succeeds or fails in defeating the beast.
+
+## Domains
+
+\`Basics\` \`Variables\` \`Control Flow\` \`Functions\` \`Loops\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+   |- bin
+      |- exercise_1.rs
+      |- exercise_2.rs
+   main.rs
+   ...
+|- solutions
+   |- exercise_1.rs
+   |- exercise_2.rs
+   ...
+Cargo.lock
+Cargo.toml
+\`\`\`
+The kata may consist in a single program with gaps, then we put the program source in the \`src\` folder at kata's root, and the main function in \`src/main.rs\`. Then, it can just be run by calling the command \`cargo run\`.
+
+If the kata consists in several small exercise programs, we put all the exercises in a \`src/bin\` folder at kata's root.
+We can just run the exercise by calling \`cargo run --bin <exercise_n>\` to run the targeted exercise, without needing the others to compile, or to comment anything. 
+
+## Links
+
+- Feel free to consult the [official Rust documentation](https://www.rust-lang.org/tools/install) for additional help.
+
+- Join the Rust community on forums such as the Rust Users Forum ([https://users.rust-lang.org/](https://users.rust-lang.org/)) or the Rust subreddit ([https://www.reddit.com/r/rust/](https://www.reddit.com/r/rust/)) for support and discussions.`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -81,9 +165,68 @@ fn defeat_beast(health: i32, stamina: f32) -> String {
     difficulty: 'facile',
     concept: 'bases',
     xpReward: 30,
-    description: `This kata is based on (Roman Numerals from Exercism)[https://exercism.org/tracks/rust/exercises/roman-numerals], which source is [https://codingdojo.org/kata/RomanNumerals/].
+    description: `# Roman Numerals
 
-The final goal is to convert a number from Arabic numerals to Roman numerals. The largest number is MMMCMXCIX (or 3999).`,
+Kata for the STARTER package of the Rust coding DOJO
+
+## Level / Duration
+
+Beginner / 45-60 minutes
+
+This kata as a part of the STARTER package targets Rust beginners.
+This kata targets 45 minutes sessions
+
+## Context
+This kata is based on (Roman Numerals from Exercism)[https://exercism.org/tracks/rust/exercises/roman-numerals], which source is [https://codingdojo.org/kata/RomanNumerals/].
+
+## Objective
+The final goal is to convert a number from Arabic numerals to Roman numerals. The largest number is MMMCMXCIX (or 3999).
+
+The structure \`Roman\`shall be implemented with the traits \`From<u32>\` and \`Display\`.
+
+\`\`\`rust
+pub struct Roman;
+\`\`\`
+
+The file \`main.rs\` shall be completed. Some unit tests are provided. They shall all pass.
+
+\`\`\`terminal
+cargo run
+cargo tests
+\`\`\`
+
+## Domains
+
+\`Basics\` \`Structs\` \`Traits\` \`Display\` \`Pattern Matching\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+   |- bin
+      |- exercise_1.rs
+      |- exercise_2.rs
+   main.rs
+   ...
+|- solutions
+   |- exercise_1.rs
+   |- exercise_2.rs
+   ...
+Cargo.lock
+Cargo.toml
+\`\`\`
+The kata may consist in a single program with gaps, then we put the program source in the \`src\` folder at kata's root, and the main function in \`src/main.rs\`. Then, it can just be run by calling the command \`cargo run\`.
+
+If the kata consists in several small exercise programs, we put all the exercises in a \`src/bin\` folder at kata's root.
+We can just run the exercise by calling \`cargo run --bin <exercise_n>\` to run the targeted exercise, without needing the others to compile, or to comment anything. 
+
+## Prerequisites
+The SETUP package must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+
+Acces to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -643,11 +786,81 @@ mod tests {
     difficulty: 'facile',
     concept: 'bases',
     xpReward: 30,
-    description: `RPN : https://en.wikipedia.org/wiki/Reverse_Polish_notation
+    description: `# Text Based RPN calculator
 
+Kata for the STARTER package of the Rust coding DOJO
+
+## Level / Duration
+Beginner / 45-60 minutes
+
+This kata as a part of the STARTER package targets Rust beginners.
+This kata targets 45 minutes sessions
+
+## Context
+RPN : https://en.wikipedia.org/wiki/Reverse_Polish_notation
+
+In this kata, participants will work on the following :
+ - Creating and Using Variables
+ - Control Flow Concepts
+ - Loops
+ - Functions
+
+## Objective
 Build a text based Reverse Polish Notation (RPN) calculator.
 
-In this kata you will develop a simple CLI (Command Line interface) Reverse Polish Notation Calculator.`,
+## Instructions
+In this kata you will develop a simple CLI (Command Line interface) Reverse Polish Notation Calculator.
+RPN functions with a last-in first out stack (LIFO) of 64 bits floating point elements.
+Supported operation are:
+ - add
+ - substract
+ - multiply
+ - divide
+
+Users can input numbers to be added to the stack.
+Users can input operators (+, -, *, /). An operator input will apply the corresponding operation to the two last operand in the stack.
+User can exit the application by inputting "q".
+User can reset the application by inputting "r".
+Any other input will print an error message.
+
+>[!IMPORTANT]
+>This kata contains 10 exercices labelled "TODO 1" to "TODO 10".
+>All exercices are in the main.rs file of the "src" folder.
+>After all exercices, it should complie without any warning.
+>Solution is provided in the "solutions" folder.
+
+## Domains
+
+\`Basics\` \`Control Flow\` \`Functions\` \`Pattern Matching\` \`CLI\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+   |- bin
+      |- exercise_1.rs
+      |- exercise_2.rs
+   main.rs
+   ...
+|- solutions
+   |- exercise_1.rs
+   |- exercise_2.rs
+   ...
+Cargo.lock
+Cargo.toml
+\`\`\`
+The kata may consist in a single program with gaps, then we put the program source in the \`src\` folder at kata's root, and the main function in \`src/main.rs\`. Then, it can just be run by calling the command \`cargo run\`.
+
+If the kata consists in several small exercise programs, we put all the exercises in a \`src/bin\` folder at kata's root.
+We can just run the exercise by calling \`cargo run --bin <exercise_n>\` to run the targeted exercise, without needing the others to compile, or to comment anything.
+
+## Prerequisites
+The SETUP package must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+
+Acces to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
     ],
@@ -1224,9 +1437,58 @@ impl RPNStack {
     difficulty: 'moyen',
     concept: 'ownership',
     xpReward: 50,
-    description: `TBC
+    description: `# Ownership Borrowing
 
-TBC`,
+Kata for the STARTER package of the Rust coding DOJO
+
+## Level / Duration
+
+Intermediate / 60 minutes
+
+This kata as a part of the STARTER package targets Rust intermediates.
+This kata targets 60 minutes sessions
+
+## Context
+
+TBC
+
+## Objective
+
+TBC
+
+## Domains
+
+\`Ownership\` \`Borrowing\` \`Borrow Checker\` \`References\` \`Slices\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+   |- bin
+      |- exercise_1.rs
+      |- exercise_2.rs
+   main.rs
+   ...
+|- solutions
+   |- exercise_1.rs
+   |- exercise_2.rs
+   ...
+Cargo.lock
+Cargo.toml
+\`\`\`
+The kata may consist in a single program with gaps, then we put the program source in the \`src\` folder at kata's root, and the main function in \`src/main.rs\`. Then, it can just be run by calling the command \`cargo run\`.
+
+If the kata consists in several small exercise programs, we put all the exercises in a \`src/bin\` folder at kata's root.
+We can just run the exercise by calling \`cargo run --bin <exercise_n>\` to run the targeted exercise, without needing the others to compile, or to comment anything. 
+
+
+## Prerequisites
+The SETUP package must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+
+Acces to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
     ],
@@ -1469,9 +1731,45 @@ fn string_uppercase(data: &mut String) {
     difficulty: 'facile',
     concept: 'bases',
     xpReward: 30,
-    description: `This kata is based on [FizzBuzz from Coding Dojo](https://codingdojo.org/kata/FizzBuzz/).
+    description: `# FizzBuzz
 
-Implement the \`fizz_buzz\` function that returns the appropriate string for each number.`,
+Kata for the STARTER package of the Rust coding DOJO
+
+## Level / Duration
+
+Beginner / 30 minutes
+
+This kata as a part of the STARTER package targets Rust beginners.
+
+## Context
+This kata is based on [FizzBuzz from Coding Dojo](https://codingdojo.org/kata/FizzBuzz/).
+
+Write a program that prints the numbers from 1 to 100. But for multiples of three print "Fizz" instead of the number and for the multiples of five print "Buzz". For numbers which are multiples of both three and five print "FizzBuzz".
+
+## Objective
+Implement the \`fizz_buzz\` function that returns the appropriate string for each number.
+
+## Domains
+
+\`Basics\` \`Iterators\` \`Pattern Matching\` \`Arithmetic\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP package must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -1580,9 +1878,49 @@ mod tests {
     difficulty: 'facile',
     concept: 'bases',
     xpReward: 30,
-    description: `This kata is based on [Leap Years from Coding Dojo](https://codingdojo.org/kata/LeapYears/).
+    description: `# Leap Years
 
-Implement the \`is_leap_year\` function that returns true if a given year is a leap year.`,
+Kata for the STARTER package of the Rust coding DOJO
+
+## Level / Duration
+
+Beginner / 30 minutes
+
+This kata as a part of the STARTER package targets Rust beginners.
+
+## Context
+This kata is based on [Leap Years from Coding Dojo](https://codingdojo.org/kata/LeapYears/).
+
+The Gregorian Calendar defines leap years with the following rules:
+- All years divisible by 400 ARE leap years
+- All years divisible by 100 but not by 400 are NOT leap years
+- All years divisible by 4 but not by 100 ARE leap years
+- All years not divisible by 4 are NOT leap years
+
+## Objective
+Implement the \`is_leap_year\` function that returns true if a given year is a leap year.
+
+## Domains
+
+\`Basics\` \`Conditionals\` \`Arithmetic\` \`TDD\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP package must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -1713,9 +2051,53 @@ mod tests {
     difficulty: 'facile',
     concept: 'bases',
     xpReward: 30,
-    description: `This kata is based on [Bowling from Coding Dojo](https://codingdojo.org/kata/Bowling/).
+    description: `# Bowling
 
-Implement the \`score\` function that takes a sequence of rolls and returns the total score.`,
+Kata for the STARTER package of the Rust coding DOJO
+
+## Level / Duration
+
+Beginner / 45-60 minutes
+
+This kata as a part of the STARTER package targets Rust beginners.
+
+## Context
+This kata is based on [Bowling from Coding Dojo](https://codingdojo.org/kata/Bowling/).
+
+Create a program which, given a valid sequence of rolls for one line of American Ten-Pin Bowling, produces the total score for the game.
+
+Scoring rules:
+- Each game includes ten frames
+- In each frame, the bowler gets up to two tries to knock down all pins
+- Open frame: total pins knocked down in two tries
+- Spare (/): 10 + pins knocked down on next throw
+- Strike (X): 10 + pins knocked down on next two throws
+- Tenth frame: if spare or strike, bonus throws are added
+
+## Objective
+Implement the \`score\` function that takes a sequence of rolls and returns the total score.
+
+## Domains
+
+\`Basics\` \`Iterators\` \`Algorithms\` \`Arrays\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP package must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -1869,9 +2251,52 @@ mod tests {
     difficulty: 'moyen',
     concept: 'bases',
     xpReward: 50,
-    description: `This kata is based on [String Calculator from Coding Dojo](https://codingdojo.org/kata/StringCalculator/).
+    description: `# String Calculator
 
-Implement the \`add\` function that takes a string and returns a Result containing the sum or an error message.`,
+Kata for the STARTER package of the Rust coding DOJO
+
+## Level / Duration
+
+Intermediate / 60 minutes
+
+This kata as a part of the STARTER package targets Rust beginners and intermediate learners.
+
+## Context
+This kata is based on [String Calculator from Coding Dojo](https://codingdojo.org/kata/StringCalculator/).
+
+Create a calculator that receives a String as input and returns the sum of numbers.
+
+Steps:
+1. Handle 0, 1 or 2 numbers separated by comma
+2. Handle an unknown number of numbers
+3. Handle newlines as separators
+4. Handle custom delimiters: \`//[delimiter]\\n[numbers]\`
+5. Reject negative numbers with an error message
+
+## Objective
+Implement the \`add\` function that takes a string and returns a Result containing the sum or an error message.
+
+## Domains
+
+\`Basics\` \`String Manipulation\` \`Error Handling\` \`Iterators\` \`TDD\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP package must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -2079,9 +2504,51 @@ mod tests {
     difficulty: 'moyen',
     concept: 'bases',
     xpReward: 50,
-    description: `This kata is based on [Tennis from Coding Dojo](https://codingdojo.org/kata/Tennis/).
+    description: `# Tennis
 
-Implement a Tennis struct with \`point_won\` and \`score\` methods.`,
+Kata for the STARTER package of the Rust coding DOJO
+
+## Level / Duration
+
+Intermediate / 45 minutes
+
+This kata as a part of the STARTER package targets Rust intermediate learners.
+
+## Context
+This kata is based on [Tennis from Coding Dojo](https://codingdojo.org/kata/Tennis/).
+
+Implement a simple tennis scoring system:
+- Points: "love" (0), "15" (1), "30" (2), "40" (3)
+- If both have 40: "deuce"
+- If deuce, winner gets "advantage"
+- Player with advantage who wins wins the game
+- Player without advantage who wins brings it back to deuce
+- Game won when a player has 4+ points and leads by 2
+
+## Objective
+Implement a Tennis struct with \`point_won\` and \`score\` methods.
+
+## Domains
+
+\`Basics\` \`Enums\` \`State Machine\` \`Pattern Matching\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP package must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -2312,9 +2779,65 @@ mod tests {
     difficulty: 'facile',
     concept: 'bases',
     xpReward: 30,
-    description: `This kata is based on [FooBarQix from Coding Dojo](https://codingdojo.org/kata/FooBarQix/).
+    description: `# FooBarQix
 
-Implement \`compute(n: u32) -&gt; String\` combining divisibility rules and digit scanning.`,
+Kata for the STARTER package of the Rust coding DOJO
+
+## Level / Duration
+
+Beginner / 30 minutes
+
+This kata as a part of the STARTER package targets Rust beginners.
+
+## Context
+This kata is based on [FooBarQix from Coding Dojo](https://codingdojo.org/kata/FooBarQix/).
+
+Implement a function \`compute(n: u32) -> String\` that applies the following rules:
+- If \`n\` is divisible by 3, append \`"Foo"\`
+- If \`n\` is divisible by 5, append \`"Bar"\`
+- If \`n\` is divisible by 7, append \`"Qix"\`
+- For each digit \`3\` found in \`n\`, append \`"Foo"\`
+- For each digit \`5\` found in \`n\`, append \`"Bar"\`
+- For each digit \`7\` found in \`n\`, append \`"Qix"\`
+- If none of the above apply, return \`n\` as a string
+
+Examples: \`3\` → \`"FooFoo"\`, \`5\` → \`"BarBar"\`, \`15\` → \`"FooBarBar"\`, \`7\` → \`"QixQix"\`, \`33\` → \`"FooFooFoo"\`
+
+## Objective
+Implement \`compute(n: u32) -> String\` combining divisibility rules and digit scanning.
+
+## Domains
+
+\`Basics\` \`Iterators\` \`Arithmetic\` \`Pattern Matching\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+Run the exercise:
+\`\`\`bash
+cargo run
+cargo test
+\`\`\`
+
+Run the solution:
+\`\`\`bash
+cargo run --bin solutions
+\`\`\`
+
+## Prerequisites
+The SETUP package must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -2468,9 +2991,60 @@ mod tests {
     difficulty: 'facile',
     concept: 'bases',
     xpReward: 30,
-    description: `This kata is based on [Nim from Coding Dojo](https://codingdojo.org/kata/Nim/).
+    description: `# NimGame
 
-Implement \`nim_winner(sticks: u32) -&gt; &'static str\` that returns \`"Player 1"\` or \`"Player 2"\` (the winner with optimal play).`,
+Kata for the STARTER package of the Rust coding DOJO
+
+## Level / Duration
+
+Beginner / 30 minutes
+
+This kata as a part of the STARTER package targets Rust beginners.
+
+## Context
+This kata is based on [Nim from Coding Dojo](https://codingdojo.org/kata/Nim/).
+
+Jeu de Nim à deux joueurs. Start with a pile of sticks. Each turn, a player removes 1, 2, or 3 sticks. The player who takes the **last** stick **loses**.
+
+Given an initial number of sticks, determine which player wins with optimal play.
+
+## Objective
+Implement \`nim_winner(sticks: u32) -> &'static str\` that returns \`"Player 1"\` or \`"Player 2"\` (the winner with optimal play).
+
+**Hint:** Think about multiples of 4 — positions that are losing for the current player follow a pattern.
+
+## Domains
+
+\`Basics\` \`Pattern Matching\` \`Algorithms\` \`Game Theory\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+Run the exercise:
+\`\`\`bash
+cargo run
+cargo test
+\`\`\`
+
+Run the solution:
+\`\`\`bash
+cargo run --bin solutions
+\`\`\`
+
+## Prerequisites
+The SETUP package must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -2584,9 +3158,61 @@ mod tests {
     difficulty: 'facile',
     concept: 'bases',
     xpReward: 30,
-    description: `This kata is based on [WordWrap from Coding Dojo](https://codingdojo.org/kata/WordWrap/).
+    description: `# WordWrap
 
-Implement \`wrap(text: &str, column: usize) -&gt; String\` that correctly wraps text at the given column width.`,
+Kata for the STARTER package of the Rust coding DOJO
+
+## Level / Duration
+
+Beginner / 30 minutes
+
+This kata as a part of the STARTER package targets Rust beginners.
+
+## Context
+This kata is based on [WordWrap from Coding Dojo](https://codingdojo.org/kata/WordWrap/).
+
+Implement a \`wrap(text: &str, column: usize) -> String\` function that wraps a string at word boundaries so that no line exceeds \`column\` characters.
+
+Rules:
+- Insert newlines so no line exceeds \`column\` characters
+- Break at word boundaries (spaces) whenever possible
+- If a single word is longer than \`column\`, break it mid-word
+
+## Objective
+Implement \`wrap(text: &str, column: usize) -> String\` that correctly wraps text at the given column width.
+
+## Domains
+
+\`Basics\` \`String Manipulation\` \`Slices\` \`Iterators\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+Run the exercise:
+\`\`\`bash
+cargo run
+cargo test
+\`\`\`
+
+Run the solution:
+\`\`\`bash
+cargo run --bin solutions
+\`\`\`
+
+## Prerequisites
+The SETUP package must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -2722,9 +3348,77 @@ mod tests {
     difficulty: 'facile',
     concept: 'bases',
     xpReward: 30,
-    description: `This kata is based on [NumberToLCD from Coding Dojo](https://codingdojo.org/kata/NumberToLCD/).
+    description: `# NumberToLCD
 
-Implement \`to_lcd(number: &str) -&gt; String\` returning the 3-line LCD representation of the input number string, with lines separated by \`\\n\`.`,
+Kata for the STARTER package of the Rust coding DOJO
+
+## Level / Duration
+
+Beginner / 45 minutes
+
+This kata as a part of the STARTER package targets Rust beginners.
+
+## Context
+This kata is based on [NumberToLCD from Coding Dojo](https://codingdojo.org/kata/NumberToLCD/).
+
+Display numbers in LCD style using 3 lines of text. Each digit is 3 characters wide:
+
+\`\`\`
+   _  _     _  _  _  _  _
+ | _| _||_||_ |_   ||_||_|
+ ||_  _|  | _||_|  ||_| _|
+\`\`\`
+
+The digits 0–9 are represented as follows (3 chars wide, top / middle / bottom row):
+
+| Digit | Top   | Mid   | Bot   |
+|-------|-------|-------|-------|
+| 0     | \` _ \` | \`\\| \\|\` | \`\\|_\\|\` |
+| 1     | \`   \` | \`  \\|\` | \`  \\|\` |
+| 2     | \` _ \` | \` _\\|\` | \`\\|_ \` |
+| 3     | \` _ \` | \` _\\|\` | \` _\\|\` |
+| 4     | \`   \` | \`\\|_\\|\` | \`  \\|\` |
+| 5     | \` _ \` | \`\\|_ \` | \` _\\|\` |
+| 6     | \` _ \` | \`\\|_ \` | \`\\|_\\|\` |
+| 7     | \` _ \` | \`  \\|\` | \`  \\|\` |
+| 8     | \` _ \` | \`\\|_\\|\` | \`\\|_\\|\` |
+| 9     | \` _ \` | \`\\|_\\|\` | \` _\\|\` |
+
+## Objective
+Implement \`to_lcd(number: &str) -> String\` returning the 3-line LCD representation of the input number string, with lines separated by \`\\n\`.
+
+## Domains
+
+\`Basics\` \`Arrays\` \`String Manipulation\` \`Formatting\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+Run the exercise:
+\`\`\`bash
+cargo run
+cargo test
+\`\`\`
+
+Run the solution:
+\`\`\`bash
+cargo run --bin solutions
+\`\`\`
+
+## Prerequisites
+The SETUP package must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -2851,9 +3545,72 @@ mod tests {
     difficulty: 'facile',
     concept: 'generics',
     xpReward: 30,
-    description: `This kata is based on [Greed from Coding Dojo](https://codingdojo.org/kata/Greed/).
+    description: `# Greed
 
-Implement \`score(dice: &[u32]) -&gt; u32\` that computes the total score for a given set of dice.`,
+Kata for the STARTER package of the Rust coding DOJO
+
+## Level / Duration
+
+Beginner / 30 minutes
+
+This kata as a part of the STARTER package targets Rust beginners.
+
+## Context
+This kata is based on [Greed from Coding Dojo](https://codingdojo.org/kata/Greed/).
+
+Greed is a dice game. Given up to 6 dice values (1–6), compute the score according to these rules:
+
+| Roll              | Score                          |
+|-------------------|-------------------------------|
+| Single 1          | 100                            |
+| Single 5          | 50                             |
+| Triple 1s         | 1000                           |
+| Triple 2s         | 200                            |
+| Triple 3s         | 300                            |
+| Triple 4s         | 400                            |
+| Triple 5s         | 500                            |
+| Triple 6s         | 600                            |
+| Four of a kind    | triple score × 2               |
+| Five of a kind    | triple score × 4               |
+| Six of a kind     | triple score × 8               |
+
+All other dice score 0.
+
+## Objective
+Implement \`score(dice: &[u32]) -> u32\` that computes the total score for a given set of dice.
+
+## Domains
+
+\`Basics\` \`Arrays\` \`Counting\` \`Iterators\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+Run the exercise:
+\`\`\`bash
+cargo run
+cargo test
+\`\`\`
+
+Run the solution:
+\`\`\`bash
+cargo run --bin solutions
+\`\`\`
+
+## Prerequisites
+The SETUP package must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -3012,7 +3769,116 @@ mod tests {
     difficulty: 'facile',
     concept: 'structs',
     xpReward: 30,
-    description: `Consulte le README.md du kata dans le dossier \`katas/02-structure/00-basics/\``,
+    description: `## Basics
+
+### Level / duration
+
+[Intermediate] / 90 minutes
+
+### Context
+
+#### Data structures and traits basics
+
+This module introduces data structures and the basics of traits in Rust.
+
+In computer science and programming, a *Data Structure* is both a way of laying out the memory used by the program (physical) and to provide a relevant level of abstraction for using data of any kind (logical).
+
+#### Colors as an example
+
+For instance, a color could be strucutured as three numbers, each for the strength of one primary color (traditionally red-yellow-blue, more commonly in computing red-green-blue).
+
+But it could also be structured as a base primary color (from a limited set), then three optional numbers to represent biases towards this base (hue shifting, luminosity, saturation).
+
+Although the second data structure would be suboptimal in general, it could outperform where colors tend to stay within a knwon standard. As such, even for a trivial program, data structures must be carefully crafted.
+
+Rust uses the keyword \`struct\` to introducte new data structures. For instance, such is the Color Data Structure from the first example (for [bikeshedding](https://en.wikipedia.org/wiki/Law_of_triviality) reasons, we will use RYB) :
+
+\`\`\`rust
+struct ColorRyb {
+  red: u8,
+  yellow: u8,
+  blue: u8,
+}
+\`\`\`
+
+From there on, a new \`Color\` may be instanciated as such:
+\`\`\`rust
+let red = ColorRyb {
+  red: 255,
+  yellow: 0,
+  blue: 0,
+}
+\`\`\`
+
+The second way of introducing colors is more abstract. For starters, "base primary colors" need to be introduced somehow. For this, we will use Rust’s enumerations:
+\`\`\`rust
+enum BaseColor {
+  Red,
+  Yellow,
+  Blue,
+}
+\`\`\`
+
+Any value of type \`BaseColor\` may be one of these three.
+
+Then we could define:
+\`\`\`rust
+struct ColorBias {
+  base: BaseColor,
+  hue_shift: Option<u8>,
+  luminosity: Option<u8>,
+  saturation: Option<u8>,
+}
+\`\`\`
+
+
+### Objective
+
+Master the basics about structure handling in Rust
+
+### Tasks
+
+1. Introduction (5 minutes) : [introduction.rs](src/introduction.rs)
+2. Strings and Vectors (15 minutes) : [string.rs](src/string.rs)
+3. Pattern Matching (20 minutes): [pattern_matching.rs](src/pattern_matching.rs)
+4. Basics of Traits (20 minutes): [trait.rs](src/traits)
+5. Combined Exercise (15 minutes): [combined.rs](src/combined.rs)
+6. Q&A and Closing (5 minutes)
+
+Resolved exercises : [solutions](solutions/main.rs)
+
+## Domains
+
+\`Structs\` \`Enums\` \`Traits\` \`Pattern Matching\` \`Vectors\` \`Strings\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+   |- bin
+      |- exercise_1.rs
+      |- exercise_2.rs
+   main.rs
+   ...
+|- solutions
+   |- exercise_1.rs
+   |- exercise_2.rs
+   ...
+Cargo.lock
+Cargo.toml
+\`\`\`
+The kata may consist in a single program with gaps, then we put the program source in the \`src\` folder at kata's root, and the main function in \`src/main.rs\`. Then, it can just be run by calling the command \`cargo run\`.
+
+If the kata consists in several small exercise programs, we put all the exercises in a \`src/bin\` folder at kata's root.
+We can just run the exercise by calling \`cargo run --bin <exercise_n>\` to run the targeted exercise, without needing the others to compile, or to comment anything. 
+
+## Prerequisites
+The SETUP and STARTER packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -3494,7 +4360,163 @@ impl Sortable for CustomStruct {
     difficulty: 'moyen',
     concept: 'structs',
     xpReward: 50,
-    description: `### Ownership and Memory Management`,
+    description: `# Smart Pointers
+
+## Level / Duration
+[Intermediate] / 90 minutes
+
+---
+
+## Context
+
+### Ownership and Memory Management
+
+This module introduces **smart pointers** in Rust, which extend the ownership model to manage memory and resources with more flexibility.
+
+Rust’s default variables are allocated on the **stack** when possible. For dynamic and **heap-allocated** data, Rust provides ownership and borrowing mechanisms to ensure memory safety without a garbage collector.
+
+However, some situations require more advanced control over how data is **shared, mutated, or freed**. This is where **smart pointers** come in.
+
+---
+
+### What is a Smart Pointer?
+
+A **smart pointer** is a data structure that behaves like a pointer but also has additional metadata and capabilities.
+
+While a *regular* pointer (like a reference \`&T\`) just **points to data** without owning it, a smart pointer **owns** or **manages** data and may enforce specific rules about:
+
+- Memory allocation and deallocation
+- Mutability
+- Shared access (reference counting)
+- Thread safety
+
+---
+
+### Examples of Smart Pointers in Rust
+
+Rust’s standard library offers several smart pointers for different use-cases:
+
+- \`Box<T>\` – Heap allocation for single ownership  
+- \`Rc<T>\` – Reference-counted shared ownership (single-threaded)  
+- \`Arc<T>\` – Atomic reference counting (multi-threaded)  
+- \`RefCell<T>\` – Interior mutability with dynamic borrow checking  
+- \`Mutex<T>\` – Thread-safe interior mutability
+
+---
+
+### Why use Smart Pointers?
+
+Without smart pointers, advanced data structures become impossible or unsafe to implement.
+
+For example:
+
+A **recursive data structure** like a linked list cannot work with plain references because Rust needs to know sizes at compile time:
+
+\`\`\`rust
+enum List {
+    Cons(i32, Box<List>),
+    Nil,
+}
+\`\`\`
+Here, \`Box\` provides **indirection** to allow recursive types.
+
+---
+
+**Shared ownership** is impossible with normal references (only one owner allowed).  
+Using \`Rc\` lets you **share the same data among multiple owners**:
+
+\`\`\`rust
+use std::rc::Rc;
+
+let a = Rc::new(5);
+let b = Rc::clone(&a);
+\`\`\`
+Both \`a\` and \`b\` now point to the same value on the heap.
+Rust tracks the reference count automatically and deallocates the data when the count reaches zero.
+
+Interior mutability is required when you want to mutate data even if it’s behind an immutable reference (for example in shared contexts).
+For this, Rust offers \`RefCell\` (single-threaded) and \`Mutex\` (thread-safe).
+
+**Example: RefCell**  
+Enables interior mutability:
+
+\`\`\`rust
+use std::cell::RefCell;
+
+let data = RefCell::new(5);
+*data.borrow_mut() = 10;
+\`\`\`
+Allows mutation even when the \`RefCell\` itself is immutable.
+
+---
+
+### Objective
+
+Master the basics of smart pointers in Rust
+
+---
+
+### Tasks
+
+- Box and Heap Allocation (15 minutes): [box.rs](src/box.rs)
+- Rc and Shared Ownership (20 minutes): [rc.rs](src/rc.rs)
+- RefCell and Interior Mutability (20 minutes): [refcell.rs](src/refcell.rs)
+- Combined Exercise (15 minutes): [combined.rs](src/combined.rs)
+- Q&A and Closing (5 minutes)
+
+Resolved exercises : [solutions](solutions/main.rs)
+
+---
+
+### ❓ FAQ: Rust Myths vs Reality
+
+Below are some common misconceptions (“myths”) about Rust, contrasted with what actually happens in practice — many illustrated by the smart‑pointer exercises in this kata.
+
+| Myth                                                        | Reality                                                                                                                                         | Related Exercises                                  |
+|-------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| **"Rust has zero memory bugs, always."**                    | Rust prevents many memory errors at compile time, but you can still create logic bugs, runtime panics (\`RefCell\` borrow violations), or leaks. | Combined Ex. 1 (leak), Combined Ex. 3 (RefCell panic) |
+| **"Rust cannot leak memory."**                              | Strong \`Rc\` cycles never drop to zero → leaked allocations. Rust has no GC to detect or collect them.                                           | Combined Ex. 1; Rc section Ex. 1 (shared tails)    |
+| **"You don't need smart pointers in Rust."**                | Smart pointers are central to building recursive, shared, or mutable shared data structures.                                                    | All sections                                       |
+| **"Rust forbids all shared mutability."**                   | It forbids unsafe shared mutability statically; you can opt into interior mutability via \`RefCell\`, \`Mutex\`, etc.                              | RefCell Ex. 1–3; Combined Ex. 3                    |
+| **"\`Rc<RefCell<_>\` is always safe."**                       | It’s flexible but shifts borrow checks to runtime; misuse leads to panics. Use carefully and document invariants.                              | RefCell Ex. 2–3; Combined Ex. 3                    |
+| **"Rust code is too rigid for graphs and complex structures."** | Use \`Rc\`, \`Weak\`, and \`RefCell\` to model DAGs, graphs, and shared trees safely (with care).                                                     | Rc Ex. 2; Combined Ex. 2                           |
+| **"Avoiding \`unsafe\` means you can’t get into trouble."**   | You can still leak memory, panic, or deadlock using only safe abstractions incorrectly.                                                         | Combined Ex. 1 & 3                                 |
+| **"Rust never panics unless you call \`panic!()\`."**         | Many standard types (like \`RefCell\`) panic on contract violations (e.g. double mutable borrow).                                                 | RefCell Ex. 1–3; Combined Ex. 3                    |
+
+---
+
+## Domains
+
+\`Ownership\` \`Box\` \`Rc\` \`RefCell\` \`Interior Mutability\` \`Memory Management\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+   |- bin
+      |- exercise_1.rs
+      |- exercise_2.rs
+    main.rs
+    ...
+|- solutions
+   |- exercise_1.rs
+   |- exercise_2.rs
+   ...
+Cargo.lock
+Cargo.toml
+\`\`\`
+The kata may consist in a single program with gaps, then we put the program source in the \`src\` folder at kata's root, and the main function in \`src/main.rs\`. Then, it can just be run by calling the command \`cargo run\`.
+
+If the kata consists in several small exercise programs, we put all the exercises in a \`src/bin\` folder at kata's root.
+We can just run the exercise by calling \`cargo run --bin <exercise_n>\` to run the targeted exercise, without needing the others to compile, or to comment anything.
+
+## Prerequisites
+The SETUP and STARTER packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -4197,9 +5219,59 @@ impl TreeNode2 {
     difficulty: 'moyen',
     concept: 'structs',
     xpReward: 50,
-    description: `This kata is based on [Game of Life from Coding Dojo](https://codingdojo.org/kata/GameOfLife/).
+    description: `# Game of Life
 
-Implement the Game of Life grid and the \`next_generation\` function.`,
+Kata for the STRUCTURE package of the Rust coding DOJO
+
+## Level / Duration
+
+Intermediate / 60 minutes
+
+## Context
+This kata is based on [Game of Life from Coding Dojo](https://codingdojo.org/kata/GameOfLife/).
+
+Conway's Game of Life is a cellular automaton. Given a grid of cells (alive or dead), compute the next generation using these rules:
+1. Any live cell with fewer than 2 live neighbours dies (underpopulation)
+2. Any live cell with more than 3 live neighbours dies (overcrowding)
+3. Any live cell with 2 or 3 live neighbours lives on
+4. Any dead cell with exactly 3 live neighbours becomes alive
+
+## Objective
+Implement the Game of Life grid and the \`next_generation\` function.
+
+### Tasks
+1. Grid representation (10 min): [grid.rs](src/grid.rs)
+2. Neighbour counting (15 min): [grid.rs](src/grid.rs)
+3. Next generation logic (15 min): [life.rs](src/life.rs)
+4. Display and testing (10 min): [main.rs](src/main.rs)
+
+Resolved exercises: [solutions](solutions/)
+
+## Domains
+
+\`Structs\` \`Iterators\` \`2D Grid\` \`Algorithms\` \`Simulation\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+|   main.rs
+|   grid.rs
+|   life.rs
+|- solutions
+|   main.rs
+|   grid.rs
+|   life.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP and STARTER packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -4436,9 +5508,43 @@ mod tests {
     difficulty: 'moyen',
     concept: 'structs',
     xpReward: 50,
-    description: `This kata is based on [Minesweeper from Coding Dojo](https://codingdojo.org/kata/Minesweeper/).
+    description: `# Minesweeper
 
-Implement a function that takes a minefield and returns the annotated field with mine counts.`,
+Kata for the STRUCTURE package of the Rust coding DOJO
+
+## Level / Duration
+
+Intermediate / 45 minutes
+
+## Context
+This kata is based on [Minesweeper from Coding Dojo](https://codingdojo.org/kata/Minesweeper/).
+
+Given a minefield represented by characters (* for mine, . for safe), output the field with numbers indicating adjacent mines.
+
+## Objective
+Implement a function that takes a minefield and returns the annotated field with mine counts.
+
+## Domains
+
+\`Structs\` \`Arrays\` \`2D Grid\` \`Algorithms\` \`Counting\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP and STARTER packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -4638,9 +5744,58 @@ mod tests {
     difficulty: 'moyen',
     concept: 'structs',
     xpReward: 50,
-    description: `This kata is based on [Poker Hands from Coding Dojo](https://codingdojo.org/kata/PokerHands/).
+    description: `# Poker Hands
 
-Implement a poker hand comparator that determines which hand wins.`,
+Kata for the STRUCTURE package of the Rust coding DOJO
+
+## Level / Duration
+
+Intermediate / 90 minutes
+
+## Context
+This kata is based on [Poker Hands from Coding Dojo](https://codingdojo.org/kata/PokerHands/).
+
+Compare two poker hands and determine the winner. Poker hands are ranked (lowest to highest):
+- High Card, Pair, Two Pairs, Three of a Kind, Straight, Flush, Full House, Four of a Kind, Straight Flush
+
+## Objective
+Implement a poker hand comparator that determines which hand wins.
+
+### Tasks
+1. Card and Suit types (10 min): [card.rs](src/card.rs)
+2. Hand parsing and ranking (30 min): [hand.rs](src/hand.rs)
+3. Hand comparison (20 min): [compare.rs](src/compare.rs)
+4. Integration and testing (15 min): [main.rs](src/main.rs)
+
+Resolved exercises: [solutions](solutions/)
+
+## Domains
+
+\`Enums\` \`Structs\` \`Sorting\` \`Pattern Matching\` \`HashMap\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+|   main.rs
+|   card.rs
+|   hand.rs
+|   compare.rs
+|- solutions
+|   main.rs
+|   card.rs
+|   hand.rs
+|   compare.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP and STARTER packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -5037,9 +6192,52 @@ mod tests {
     difficulty: 'moyen',
     concept: 'structs',
     xpReward: 50,
-    description: `This kata is based on [Diamond from Coding Dojo](https://codingdojo.org/kata/Diamond/).
+    description: `# Diamond
 
-Implement the \`diamond\` function that returns a vector of strings representing the diamond shape.`,
+Kata for the STRUCTURE package of the Rust coding DOJO
+
+## Level / Duration
+
+Intermediate / 45 minutes
+
+## Context
+This kata is based on [Diamond from Coding Dojo](https://codingdojo.org/kata/Diamond/).
+
+Given a letter, print a diamond starting with 'A' with the supplied letter at the widest point.
+
+For example: diamond('C') prints:
+\`\`\`
+  A
+ B B
+C   C
+ B B
+  A
+\`\`\`
+
+## Objective
+Implement the \`diamond\` function that returns a vector of strings representing the diamond shape.
+
+## Domains
+
+\`Strings\` \`Iterators\` \`Formatting\` \`Pattern Matching\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP and STARTER packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -5175,9 +6373,43 @@ mod tests {
     difficulty: 'moyen',
     concept: 'structs',
     xpReward: 50,
-    description: `This kata is based on [Yahtzee from Coding Dojo](https://codingdojo.org/kata/Yahtzee/).
+    description: `# Yahtzee
 
-Implement \`score(dice: &[u32; 5], category: Category) -&gt; u32\` for all scoring categories.`,
+Kata for the STRUCTURE package of the Rust coding DOJO
+
+## Level / Duration
+
+Intermediate / 60 minutes
+
+## Context
+This kata is based on [Yahtzee from Coding Dojo](https://codingdojo.org/kata/Yahtzee/).
+
+Score a Yahtzee hand. Given 5 dice values, compute the score for a chosen category: ones through sixes (sum of matching dice), pair (highest pair), two pairs, three/four of a kind, small straight (1-5=15), large straight (2-6=20), full house (sum of all), chance (sum of all), or Yahtzee (50 points for five of a kind).
+
+## Objective
+Implement \`score(dice: &[u32; 5], category: Category) -> u32\` for all scoring categories.
+
+## Domains
+
+\`Enums\` \`Pattern Matching\` \`Arrays\` \`Counting\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/02-structure/06-yahtzee
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP and STARTER packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -5430,9 +6662,48 @@ mod tests {
     difficulty: 'moyen',
     concept: 'structs',
     xpReward: 50,
-    description: `This kata is based on [Berlin Clock from Coding Dojo](https://codingdojo.org/kata/BerlinClock/).
+    description: `# Berlin Clock
 
-Implement \`berlin_clock(time: &str) -&gt; String\` that converts a time to its Berlin Clock representation.`,
+Kata for the STRUCTURE package of the Rust coding DOJO
+
+## Level / Duration
+
+Intermediate / 60 minutes
+
+## Context
+This kata is based on [Berlin Clock from Coding Dojo](https://codingdojo.org/kata/BerlinClock/).
+
+The Berlin Clock (Mengenlehreuhr) displays time using rows of illuminated lamps. Given a time string "HH:MM:SS", produce a 5-row string representation:
+- Row 1 (1 lamp): seconds blink — "Y" if even, "O" if odd
+- Row 2 (4 lamps): each lamp = 5 hours (R if lit, O if not)
+- Row 3 (4 lamps): each lamp = 1 hour (R if lit, O if not)
+- Row 4 (11 lamps): each lamp = 5 minutes (Y if lit, R at positions 3/6/9, O if not)
+- Row 5 (4 lamps): each lamp = 1 minute (Y if lit, O if not)
+
+## Objective
+Implement \`berlin_clock(time: &str) -> String\` that converts a time to its Berlin Clock representation.
+
+## Domains
+
+\`Enums\` \`Arithmetic\` \`Iterators\` \`Formatting\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/02-structure/07-berlin-clock
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP and STARTER packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -5554,9 +6825,50 @@ mod tests {
     difficulty: 'moyen',
     concept: 'traits',
     xpReward: 50,
-    description: `This kata is based on [Gilded Rose from Coding Dojo](https://codingdojo.org/kata/gilded-rose/).
+    description: `# Gilded Rose
 
-Refactor the legacy \`update_quality\` function to be clean and readable, then extend it to support "Conjured" items.`,
+Kata for the STRUCTURE package of the Rust coding DOJO
+
+## Level / Duration
+
+Intermediate / 90 minutes
+
+## Context
+This kata is based on [Gilded Rose from Coding Dojo](https://codingdojo.org/kata/gilded-rose/).
+
+An inn manages items with a \`sell_in\` (days until expiry) and \`quality\` value. Each day \`update_quality\` is called. The rules are:
+
+- Normal items: quality degrades by 1 each day, by 2 once \`sell_in\` has passed
+- "Aged Brie": quality improves with age (by 1, then 2 past sell date)
+- "Sulfuras, Hand of Ragnaros": legendary item — never changes
+- "Backstage passes to a TAFKAL80ETC concert": quality rises (+1 normally, +2 within 10 days, +3 within 5 days, drops to 0 after the concert)
+- Quality is never negative and never exceeds 50 (Sulfuras is always 80)
+- **NEW**: "Conjured" items degrade in quality twice as fast as normal items
+
+## Objective
+Refactor the legacy \`update_quality\` function to be clean and readable, then extend it to support "Conjured" items.
+
+## Domains
+
+\`Refactoring\` \`Pattern Matching\` \`TDD\` \`Legacy Code\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/02-structure/08-gilded-rose
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP and STARTER packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
     ],
@@ -5825,9 +7137,48 @@ mod tests {
     difficulty: 'moyen',
     concept: 'generics',
     xpReward: 50,
-    description: `This kata is based on [Range from Coding Dojo](https://codingdojo.org/kata/Range/).
+    description: `# Range
 
-Implement a \`Range\` struct using \`Bound::Open(i32)\` and \`Bound::Closed(i32)\` enum variants, with all five range operations.`,
+Kata for the STRUCTURE package of the Rust coding DOJO
+
+## Level / Duration
+
+Intermediate / 60 minutes
+
+## Context
+This kata is based on [Range from Coding Dojo](https://codingdojo.org/kata/Range/).
+
+Implement integer ranges with open (exclusive) and closed (inclusive) bounds. Interval notation:
+- \`[a, b]\` — closed on both ends (a and b are included)
+- \`(a, b)\` — open on both ends (a and b are excluded)
+- \`[a, b)\` — closed start, open end (a included, b excluded)
+
+Support the following operations: \`contains_point\`, \`get_all_points\`, \`endpoints\`, \`contains_range\`, and \`overlaps_range\`.
+
+## Objective
+Implement a \`Range\` struct using \`Bound::Open(i32)\` and \`Bound::Closed(i32)\` enum variants, with all five range operations.
+
+## Domains
+
+\`Enums\` \`Traits\` \`Iterators\` \`Pattern Matching\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/02-structure/09-range
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP and STARTER packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -6050,9 +7401,43 @@ mod tests {
     difficulty: 'moyen',
     concept: 'concurrency',
     xpReward: 50,
-    description: `This kata is based on [Birthday Greetings from Coding Dojo](https://codingdojo.org/kata/birthday-greetings/).
+    description: `# Birthday Greetings
 
-Implement \`BirthdayService\` using traits for \`FriendRepository\` (input port) and \`EmailSender\` (output port), with in-memory test doubles to verify behavior without real I/O.`,
+Kata for the STRUCTURE package of the Rust coding DOJO
+
+## Level / Duration
+
+Intermediate / 60 minutes
+
+## Context
+This kata is based on [Birthday Greetings from Coding Dojo](https://codingdojo.org/kata/birthday-greetings/).
+
+Given a list of friends (name, birthdate, email), send birthday greeting emails to those whose birthday matches today's date. The kata demonstrates **Hexagonal Architecture** (Ports & Adapters): the core business logic is completely isolated from I/O concerns (reading files, sending emails) through trait-based ports.
+
+## Objective
+Implement \`BirthdayService\` using traits for \`FriendRepository\` (input port) and \`EmailSender\` (output port), with in-memory test doubles to verify behavior without real I/O.
+
+## Domains
+
+\`Traits\` \`Generics\` \`Hexagonal Architecture\` \`TDD\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/02-structure/10-birthday-greetings
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP and STARTER packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -6290,9 +7675,43 @@ mod tests {
     difficulty: 'moyen',
     concept: 'structs',
     xpReward: 50,
-    description: `This kata is based on [Wallet from Coding Dojo](https://codingdojo.org/kata/Wallet/).
+    description: `# Wallet
 
-Implement \`Wallet\`, \`Stock\`, \`StockType\` and the \`RateProvider\` trait. The main method is \`wallet.value(currency: &StockType, provider: &impl RateProvider) -&gt; f64\`, which sums all stock values converted to the target currency.`,
+Kata for the STRUCTURE package of the Rust coding DOJO
+
+## Level / Duration
+
+Intermediate / 60 minutes
+
+## Context
+This kata is based on [Wallet from Coding Dojo](https://codingdojo.org/kata/Wallet/).
+
+A Wallet contains Stocks, each composed of a quantity and a StockType (Petroleum, Euro, Bitcoin, Dollar). The wallet can compute its total value in a given currency by using an exchange rate provider injected as a trait.
+
+## Objective
+Implement \`Wallet\`, \`Stock\`, \`StockType\` and the \`RateProvider\` trait. The main method is \`wallet.value(currency: &StockType, provider: &impl RateProvider) -> f64\`, which sums all stock values converted to the target currency.
+
+## Domains
+
+\`Enums\` \`Traits\` \`Generics\` \`impl Trait\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/02-structure/11-wallet
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP and STARTER packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -6524,9 +7943,43 @@ mod tests {
     difficulty: 'moyen',
     concept: 'traits',
     xpReward: 50,
-    description: `This kata is based on [Trading Card Game from Coding Dojo](https://codingdojo.org/kata/TradingCardGame/).
+    description: `# Trading Card Game
 
-Implement \`Player\` and \`Game\` structs with turn-based gameplay: \`start_turn\`, \`draw\`, \`can_play\`, \`play_card\`, and \`check_winner\`.`,
+Kata for the STRUCTURE package of the Rust coding DOJO
+
+## Level / Duration
+
+Intermediate / 90 minutes
+
+## Context
+This kata is based on [Trading Card Game from Coding Dojo](https://codingdojo.org/kata/TradingCardGame/).
+
+A two-player trading card game loosely based on Hearthstone. Each player starts with 30 Health and 0 Mana slots. The deck contains 20 cards with costs \`[0,0,1,1,2,2,2,3,3,3,3,4,4,4,5,5,6,6,7,8]\`. Each turn, the active player gains +1 Mana slot (max 10), refills Mana, draws a card, then may play cards. Special rules: **Bleeding Out** (empty deck → 1 damage instead of draw), **Overload** (hand > 5 cards → drawn card discarded). The first player to reduce their opponent's Health to 0 or below wins.
+
+## Objective
+Implement \`Player\` and \`Game\` structs with turn-based gameplay: \`start_turn\`, \`draw\`, \`can_play\`, \`play_card\`, and \`check_winner\`.
+
+## Domains
+
+\`Enums\` \`TDD\` \`State Machine\` \`Structs\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/02-structure/12-trading-card-game
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP and STARTER packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -6843,9 +8296,43 @@ mod tests {
     difficulty: 'moyen',
     concept: 'structs',
     xpReward: 50,
-    description: `This kata is based on [Social Network from Coding Dojo](https://codingdojo.org/kata/social-network/).
+    description: `# Social Network
 
-Implement \`SocialNetwork\` with \`post\`, \`read\`, \`follow\`, and \`wall\` methods. The design should keep business logic decoupled from I/O concerns, making it fully testable without any external dependencies.`,
+Kata for the STRUCTURE package of the Rust coding DOJO
+
+## Level / Duration
+
+Intermediate / 90 minutes
+
+## Context
+This kata is based on [Social Network from Coding Dojo](https://codingdojo.org/kata/social-network/).
+
+Build a simple social network with four commands: **Posting** (a user publishes a message), **Reading** (view a user's own timeline, newest first), **Following** (subscribe to another user's messages), and **Wall** (aggregated feed of a user and all users they follow, newest first).
+
+## Objective
+Implement \`SocialNetwork\` with \`post\`, \`read\`, \`follow\`, and \`wall\` methods. The design should keep business logic decoupled from I/O concerns, making it fully testable without any external dependencies.
+
+## Domains
+
+\`HashMap\` \`Architecture\` \`CQRS\` \`TDD\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/02-structure/13-social-network
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP and STARTER packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -7092,9 +8579,43 @@ mod tests {
     difficulty: 'moyen',
     concept: 'generics',
     xpReward: 50,
-    description: `This kata is based on [Anagram from Coding Dojo](https://codingdojo.org/kata/Anagram/).
+    description: `# Anagram
 
-Implement \`anagrams_of(word: &str, candidates: &[&str]) -&gt; Vec&lt;String&gt;\` using idiomatic Rust: string manipulation, character sorting, iterators and closures.`,
+Kata for the STRUCTURE package of the Rust coding DOJO
+
+## Level / Duration
+
+Intermediate / 45 minutes
+
+## Context
+This kata is based on [Anagram from Coding Dojo](https://codingdojo.org/kata/Anagram/).
+
+Given a word and a list of candidate words, return all candidates that are anagrams of the word. An anagram uses exactly the same letters in a different order. The comparison is case-insensitive, and a word is **not** considered an anagram of itself (even with different casing).
+
+## Objective
+Implement \`anagrams_of(word: &str, candidates: &[&str]) -> Vec<String>\` using idiomatic Rust: string manipulation, character sorting, iterators and closures.
+
+## Domains
+
+\`Strings\` \`Iterators\` \`Sorting\` \`Closures\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/02-structure/14-anagram
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP and STARTER packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -7238,9 +8759,43 @@ mod tests {
     difficulty: 'moyen',
     concept: 'structs',
     xpReward: 50,
-    description: `This kata is based on [Bank OCR from Coding Dojo](https://codingdojo.org/kata/BankOCR/).
+    description: `# Bank OCR
 
-Implement \`parse_digits(input: &str) -&gt; Result&lt;u64, String&gt;\` that parses the OCR input into a number and returns \`Err\` if any digit is unrecognised or the checksum is invalid.`,
+Kata for the STRUCTURE package of the Rust coding DOJO
+
+## Level / Duration
+
+Intermediate / 60 minutes
+
+## Context
+This kata is based on [Bank OCR from Coding Dojo](https://codingdojo.org/kata/BankOCR/).
+
+Parse scanned bank account numbers. Each digit is represented as a 3×3 pattern of pipes (\`|\`) and underscores (\`_\`). Input is 4 lines (3 content lines + 1 blank), 27 characters wide, encoding a 9-digit account number. After parsing, validate with a checksum: \`(d9 + 2×d8 + 3×d7 + … + 9×d1) mod 11 == 0\`.
+
+## Objective
+Implement \`parse_digits(input: &str) -> Result<u64, String>\` that parses the OCR input into a number and returns \`Err\` if any digit is unrecognised or the checksum is invalid.
+
+## Domains
+
+\`Strings\` \`Parsing\` \`Error Handling\` \`Slices\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/02-structure/15-bank-ocr
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP and STARTER packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -7431,9 +8986,62 @@ mod tests {
     difficulty: 'difficile',
     concept: 'unsafe',
     xpReward: 30,
-    description: `This kata is based on [Mars Rover from Coding Dojo](https://codingdojo.org/kata/mars-rover/).
+    description: `# Mars Rover
 
-Implement the Mars Rover simulator with obstacle detection.`,
+Kata for the ADVANCED package of the Rust coding DOJO
+
+## Level / Duration
+
+Expert / 90 minutes
+
+## Context
+This kata is based on [Mars Rover from Coding Dojo](https://codingdojo.org/kata/mars-rover/).
+
+Develop a simulator that takes commands and a map, executes the commands, and shows the resulting position and direction of the Rover.
+
+Input:
+- Rover starting point (x, y) and direction (N, S, E, W)
+- A map describing obstacle locations
+- A list of commands: 'f' (forward), 'r' (right), 'l' (left)
+
+When the rover encounters an obstacle, it does nothing and reports it.
+
+## Objective
+Implement the Mars Rover simulator with obstacle detection.
+
+### Tasks
+1. Direction and Position types (15 min): [rover.rs](src/rover.rs)
+2. Map with obstacles (20 min): [map.rs](src/map.rs)
+3. Command execution (20 min): [rover.rs](src/rover.rs)
+4. Integration and edge cases (15 min): [main.rs](src/main.rs)
+
+Resolved exercises: [solutions](solutions/)
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/XX-package/XX-kataname
+|- src
+|   main.rs
+|   rover.rs
+|   map.rs
+|- solutions
+|   main.rs
+|   rover.rs
+|   map.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Domains
+
+\`Enums\` \`Structs\` \`Algorithms\` \`HashMap\`
+
+## Prerequisites
+The SETUP, STARTER and STRUCTURE packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -7750,9 +9358,43 @@ impl Rover {
     difficulty: 'difficile',
     concept: 'unsafe',
     xpReward: 30,
-    description: `This kata is based on [Sudoku from Coding Dojo](https://codingdojo.org/kata/sudoku/).
+    description: `# Sudoku
 
-Implement \`CellState\`, \`Board\` with constraint propagation, and a \`solve()\` method combining propagation with backtracking.`,
+Kata for the ADVANCED package of the Rust coding DOJO
+
+## Level / Duration
+
+Expert / 120 minutes
+
+## Context
+This kata is based on [Sudoku from Coding Dojo](https://codingdojo.org/kata/sudoku/).
+
+Build a Sudoku solver using constraint propagation and backtracking. Each cell knows which values 1-9 are possible. When only one value remains possible, the cell's value is known. When a cell's value becomes known, that value is eliminated from all peer cells (same row, column, and 3x3 box). If constraint propagation alone cannot solve the puzzle, backtracking explores possible assignments.
+
+## Objective
+Implement \`CellState\`, \`Board\` with constraint propagation, and a \`solve()\` method combining propagation with backtracking.
+
+## Domains
+
+\`Enums\` \`Recursion\` \`Backtracking\` \`HashSet\` \`Constraint Propagation\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/03-advanced/01-sudoku
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP, STARTER and STRUCTURE packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -8106,9 +9748,47 @@ mod tests {
     difficulty: 'difficile',
     concept: 'unsafe',
     xpReward: 30,
-    description: `This kata is based on [Langton's Ant from Coding Dojo](https://codingdojo.org/kata/LangtonAnt/).
+    description: `# Langton Ant
 
-Implement \`Direction\`, \`Ant\`, and \`Grid\` structs with a \`step()\` function and a \`simulate(n)\` function that runs the simulation for n steps.`,
+Kata for the ADVANCED package of the Rust coding DOJO
+
+## Level / Duration
+
+Expert / 90 minutes
+
+## Context
+This kata is based on [Langton's Ant from Coding Dojo](https://codingdojo.org/kata/LangtonAnt/).
+
+Langton's Ant is a two-dimensional cellular automaton. An ant moves on an infinite grid of white and black squares following two simple rules:
+- On a white square: turn right 90°, flip the square to black, move one step forward
+- On a black square: turn left 90°, flip the square to white, move one step forward
+
+Despite the simplicity of the rules, after roughly 10,000 steps the ant starts building a "highway" — a regular, repeating pattern that extends indefinitely.
+
+## Objective
+Implement \`Direction\`, \`Ant\`, and \`Grid\` structs with a \`step()\` function and a \`simulate(n)\` function that runs the simulation for n steps.
+
+## Domains
+
+\`Enums\` \`HashSet\` \`Simulation\` \`Cellular Automaton\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/03-advanced/02-langton-ant
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP, STARTER and STRUCTURE packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -8378,9 +10058,54 @@ mod tests {
     difficulty: 'difficile',
     concept: 'generics',
     xpReward: 30,
-    description: `This kata is based on [Brainfuck from Coding Dojo](https://codingdojo.org/kata/Brainfuck/).
+    description: `# Brainfuck
 
-Implement \`Interpreter::run(program: &str, input: &str) -&gt; Result&lt;String, String&gt;\` that executes a Brainfuck program and returns its output, or an error on invalid programs.`,
+Kata for the ADVANCED package of the Rust coding DOJO
+
+## Level / Duration
+
+Expert / 90 minutes
+
+## Context
+This kata is based on [Brainfuck from Coding Dojo](https://codingdojo.org/kata/Brainfuck/).
+
+Implement a complete Brainfuck interpreter. Brainfuck is an esoteric programming language with only 8 commands operating on a tape of byte cells:
+
+| Command | Effect |
+|---------|--------|
+| \`>\` | Move data pointer right |
+| \`<\` | Move data pointer left |
+| \`+\` | Increment current cell (wraps 255→0) |
+| \`-\` | Decrement current cell (wraps 0→255) |
+| \`.\` | Output current cell as ASCII |
+| \`,\` | Read one byte of input into current cell |
+| \`[\` | Jump past matching \`]\` if current cell is 0 |
+| \`]\` | Jump back to matching \`[\` if current cell is non-zero |
+
+## Objective
+Implement \`Interpreter::run(program: &str, input: &str) -> Result<String, String>\` that executes a Brainfuck program and returns its output, or an error on invalid programs.
+
+## Domains
+
+\`Interpreter\` \`HashMap\` \`Error Handling\` \`VM\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/03-advanced/03-brainfuck
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP, STARTER and STRUCTURE packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -8591,9 +10316,47 @@ mod tests {
     difficulty: 'difficile',
     concept: 'generics',
     xpReward: 30,
-    description: `This kata is based on [Mathematical AST from Coding Dojo](https://codingdojo.org/kata/mathematical-ast/).
+    description: `# Mathematical AST
 
-Implement the \`Expr\` enum representing AST nodes, \`parse_rpn(expr: &str) -&gt; Result&lt;Expr, String&gt;\` to build the tree from RPN input, \`evaluate(expr: &Expr) -&gt; f64\` to compute the result, and \`pretty_print(expr: &Expr) -&gt; String\` for infix display.`,
+Kata for the ADVANCED package of the Rust coding DOJO
+
+## Level / Duration
+
+Expert / 90 minutes
+
+## Context
+This kata is based on [Mathematical AST from Coding Dojo](https://codingdojo.org/kata/mathematical-ast/).
+
+Parse a Reverse Polish Notation (RPN) expression into an Abstract Syntax Tree (AST), then implement functions to evaluate and pretty-print the tree.
+
+Examples:
+- \`"3 6 +"\` → \`Add(3, 6)\` → evaluates to \`9\`, prints as \`(3 + 6)\`
+- \`"3 6 -6 * +"\` → \`Add(3, Mul(6, -6))\` → evaluates to \`-33\`, prints as \`(3 + (6 * -6))\`
+
+## Objective
+Implement the \`Expr\` enum representing AST nodes, \`parse_rpn(expr: &str) -> Result<Expr, String>\` to build the tree from RPN input, \`evaluate(expr: &Expr) -> f64\` to compute the result, and \`pretty_print(expr: &Expr) -> String\` for infix display.
+
+## Domains
+
+\`Enums\` \`Recursion\` \`Box\` \`Visitor Pattern\` \`Parsing\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/03-advanced/04-mathematical-ast
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP, STARTER and STRUCTURE packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
@@ -8823,9 +10586,45 @@ mod tests {
     difficulty: 'difficile',
     concept: 'concurrency',
     xpReward: 30,
-    description: `This kata is based on [Christmas Delivery from Coding Dojo](https://codingdojo.org/kata/christmas-delivery/).
+    description: `# Christmas Delivery
 
-Implement \`Sleigh\` (shared mutable state protected by \`Mutex\`) loaded concurrently by multiple \`Elf\` threads via \`Arc&lt;Mutex&lt;Sleigh&gt;&gt;\`. The \`run_delivery\` function spawns one thread per elf and returns the total number of presents loaded.`,
+Kata for the ADVANCED package of the Rust coding DOJO
+
+## Level / Duration
+
+Expert / 90 minutes
+
+## Context
+This kata is based on [Christmas Delivery from Coding Dojo](https://codingdojo.org/kata/christmas-delivery/).
+
+Santa needs multiple Elves to load presents onto his Sleigh concurrently. Only one Elf can place a present at a time (mutual exclusion). Design a concurrent system where multiple Elf threads work in parallel to load the sleigh, demonstrating safe shared-state concurrency in Rust.
+
+The challenge highlights Rust's ownership model and the \`Send + Sync\` guarantees that prevent data races at compile time.
+
+## Objective
+Implement \`Sleigh\` (shared mutable state protected by \`Mutex\`) loaded concurrently by multiple \`Elf\` threads via \`Arc<Mutex<Sleigh>>\`. The \`run_delivery\` function spawns one thread per elf and returns the total number of presents loaded.
+
+## Domains
+
+\`Arc\` \`Mutex\` \`Multithreading\` \`Concurrency\`
+
+## How to run a kata
+All katas share the same structure:
+\`\`\`
+/03-advanced/05-christmas-delivery
+|- src
+|   main.rs
+|- solutions
+|   main.rs
+Cargo.lock
+Cargo.toml
+\`\`\`
+
+## Prerequisites
+The SETUP, STARTER and STRUCTURE packages must have been completed
+
+Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
+Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
