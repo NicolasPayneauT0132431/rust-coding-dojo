@@ -83,6 +83,13 @@ npm run build   # production build → dist/
 
 The academy is automatically deployed to GitHub Pages on every push to `main` touching `academy/`.
 
+## AI Harness — Agentic Coding Assistant
+
+The [rewards/harness](./rewards/harness) provides skills and configurations for AI coding assistants (OpenCode, GitHub Copilot) to assist Rust development:
+- **5 skills** covering development, quality, security, refactoring, and testing
+- **OpenCode plugin** with latest Rust documentation references
+- **Copilot instructions** with Rust code generation and review rules
+
 ## Development
 
 All katas are organized as a Cargo workspace. You can run common commands from the repository root:
