@@ -87,6 +87,15 @@ function evaluateKataTests(kata: ReturnType<typeof getKataById>, code: string) {
   return { tests, allPass }
 }
 
+function renderKataMarkdown(markdown: string): string {
+  try {
+    const html = marked.parse(markdown, { async: false, breaks: true, gfm: true }) as string
+    return DOMPurify.sanitize(html)
+  } catch {
+    return markdown
+  }
+}
+
 export function KataScreen() {
   const { progress, currentKataId, setCurrentKata, completeKata, setScreen } = useApp()
   const kata = getKataById(currentKataId) ?? KATAS[0]
@@ -511,7 +520,7 @@ export function KataScreen() {
             </div>
 
             <div className="kata-modal-body">
-              <div className="kata-desc" dangerouslySetInnerHTML={{ __html: kata.description }} />
+              <div className="kata-desc kata-desc--markdown" dangerouslySetInnerHTML={{ __html: renderKataMarkdown(kata.description) }} />
 
               <div className="kata-tests-panel" style={{ marginTop: 14 }}>
                 <div className="kata-tests-header">

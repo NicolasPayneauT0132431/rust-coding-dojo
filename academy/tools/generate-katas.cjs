@@ -148,7 +148,7 @@ for (const { full, rel } of kataDirs) {
   const solutionsDir = path.join(full, 'solutions')
   let solutionCode = readRustFiles(solutionsDir) || ''
 
-  const desc = parsed.description || `Consulte le README.md du kata dans le dossier \`katas/${rel}/\``
+  const desc = readme.trim() || `Consulte le README.md du kata dans le dossier \`katas/${rel}/\``
 
   const tests = []
   if (starterCode.includes('todo!()') || starterCode.includes('todo!')) {
