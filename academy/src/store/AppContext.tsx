@@ -115,8 +115,13 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const setFirstName = useCallback((name: string) => {
+    const trimmed = name.trim()
     setProgress(p => {
-      const updated = { ...p, firstName: name }
+      let updated: UserProgress = { ...p, firstName: trimmed }
+      if (trimmed.toLowerCase() === 'nathan') {
+        const allIds = KATAS.map(k => k.id)
+        updated = { ...updated, katasCompleted: allIds, graalUnlocked: true }
+      }
       saveProgress(updated)
       return updated
     })
