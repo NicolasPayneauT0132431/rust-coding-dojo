@@ -7,7 +7,7 @@ Canonical instruction: `docs/agent-instructions/docs-sync/INSTRUCTION.md`
 2. Run the docs-sync instruction with your agent.
 3. Review and apply documentation updates.
 4. Commit docs updates.
-5. Open a PR with docs impact summary using `docs/agent-instructions/docs-sync/PR_TEMPLATE.md`.
+5. Include docs impact summary in your PR (mixed or docs-only) using `docs/agent-instructions/docs-sync/PR_TEMPLATE.md`.
 
 ## Invocation examples
 Use equivalent wording with your tool:
@@ -23,7 +23,7 @@ Use equivalent wording with your tool:
 
 ## Completion gate (mandatory)
 Before marking work complete, include:
-- `docs updated: <file list>` **or**
+- `docs updated: <file list> — <reason>` **or**
 - `no docs changes needed: <explicit reason>`
 
 If this line is missing, docs-sync was not completed.

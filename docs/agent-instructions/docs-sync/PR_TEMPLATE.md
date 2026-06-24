@@ -1,7 +1,7 @@
 ## Docs Sync Checklist
 
 - [ ] I followed `docs/agent-instructions/docs-sync/INSTRUCTION.md`
-- [ ] This PR only contains documentation-related changes
+- [ ] This PR includes documentation updates for the repo changes (docs-only or mixed PR)
 - [ ] I validated that updated statements/paths/commands match current repo state
 
 ## Documentation Impact

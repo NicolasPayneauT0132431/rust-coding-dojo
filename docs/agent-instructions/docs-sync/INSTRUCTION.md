@@ -39,7 +39,8 @@ Run this instruction at the end of any change that can affect documentation, inc
 - Keep non-doc files out of docs-sync commits/PRs.
 
 ## PR guidance
-- Use a docs-focused branch name (example: `docs/sync-<topic>`).
-- Use a docs-focused PR title (example: `docs: sync README with CI behavior`).
-- Include drift evidence and updated files in PR body.
+- Include documentation updates in the same feature PR when practical, or open a dedicated docs PR when that is cleaner.
+- If using a dedicated docs PR, use a docs-focused branch name (example: `docs/sync-<topic>`).
+- If using a dedicated docs PR, use a docs-focused PR title (example: `docs: sync README with CI behavior`).
+- Include drift evidence and updated files in PR body (for mixed or docs-only PRs).
 - Reuse `docs/agent-instructions/docs-sync/PR_TEMPLATE.md` as the PR body checklist.
