@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react'
 import type { UserProgress, Screen, Concept } from '../types'
 import { loadProgress, saveProgress, getLevelFromXP, updateStreak, EMPTY_PROGRESS } from '../store/progress'
+import { KATAS } from '../data/katas'
 
 interface AppState {
   progress: UserProgress
@@ -54,7 +55,17 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }
   }, [progress, isLoading])
 
-  const setScreen = useCallback((s: Screen) => setScreenState(s), [])
+  const setScreen = useCallback((s: Screen) => {
+    if (s === 'graal') {
+      const totalKatas = KATAS.length
+      const completedKatas = progress.katasCompleted.filter(id => KATAS.some(k => k.id === id)).length
+      if (totalKatas === 0 || completedKatas !== totalKatas) {
+        // blocked: user hasn't completed all katas
+        return
+      }
+    }
+    setScreenState(s)
+  }, [progress.katasCompleted])
   const setCurrentKata = useCallback((id: string) => {
     setCurrentKataIdState(id)
     setProgress(p => ({ ...p, currentKataId: id }))

@@ -14,6 +14,7 @@ export function Header() {
   const completedKatas = progress.katasCompleted.filter(id => KATAS.some(kata => kata.id === id)).length
   const pct = totalKatas > 0 ? Math.round((completedKatas / totalKatas) * 100) : 0
   const graalIcon = progress.graalUnlocked ? '🏆' : '🎁'
+  const allKatasCompleted = totalKatas > 0 && completedKatas === totalKatas
 
   return (
     <header className="header">
@@ -35,9 +36,11 @@ export function Header() {
         ))}
         <button
           className={`nav-btn nav-btn--graal ${screen === 'graal' ? 'nav-btn--graal-active' : ''} ${progress.graalUnlocked ? '' : 'shine'}`}
-          onClick={() => setScreen('graal')}
+          onClick={() => allKatasCompleted && setScreen('graal')}
+          disabled={!allKatasCompleted}
+          title={allKatasCompleted ? 'Le Graal' : 'Terminez tous les katas pour débloquer'}
         >
-          <span>{graalIcon}</span>
+          <span>{allKatasCompleted ? graalIcon : '🔒'}</span>
           <span>Le Graal</span>
         </button>
       </nav>
