@@ -2,6 +2,44 @@
 
 All notable changes to this project are documented in this file.
 
+## [v1.0.0] - 2026-06-24
+
+### Added
+- **Academy** : assistant Ferris avec rendu Markdown, contexte permanent, et sanitization DOMPurify.
+- **Academy** : écran onboarding avec parcours personnalisé (prénom « Nathan » débloque tous les katas et le Graal).
+- **Academy** : toggle contexte kata pour des réponses Ferris plus rapides.
+- **Academy** : écran Graal verrouillé jusqu'à complétion de tous les katas, avec bouton de récupération de la config Harness.
+- **Academy** : barre de progression dans le header basée sur les katas complétés.
+- **Academy** : tests unitaires (progression, skill tree, couverture élargie).
+- **Academy** : validation par comparaison stdout utilisateur vs solution.
+- **Docs** : GIF de démonstration intégré au README.
+- **CI/CD** : déploiement Academy fonctionnel.
+
+### Changed
+- **Academy** : UI traduite en anglais (menus, boutons, écrans, prompts Ferris).
+- **Academy** : suppression des onglets Dashboard et Profil.
+- **Academy** : déplacement du titre et des badges dans le bandeau, retrait du panneau gauche.
+- **Academy** : troncature des consignes dans le panneau gauche.
+- **Academy** : affichage complet du README en markdown dans la modal kata.
+- **Academy** : libellé « jours » retiré du header, badge streak supprimé.
+- **Harness** : optimisation (température 0, max_tokens 10000, retrait des consignes du contexte).
+- **Docs** : README enrichi avec section Academy et GIF centré.
+
+### Fixed
+- **Academy** : correction du build TypeScript (restauration useKataContext).
+- **Academy** : forçage de l'affichage Graal et currentKata après onboarding.
+- **Academy** : rollback modèle LiquidAI, ajout retry avec cache clear.
+- **Academy** : modèle Wllama stabilisé, génération exhaustive des 36 katas.
+
+### Removed
+- Agent harness (supprimé).
+
+### Merged Pull Requests
+- #63 — feat(harness): harness agentique - skills Rust et configs AI
+- #64 — feat(academy): remove dashboard and profile tabs
+- #65 — feat(wllama): assistant Ferris improvements
+- #61 — feat(wllama): onboarding, parcours, download progress
+
 ## [v0.5.0] - 2026-06-24
 
 ### Added
