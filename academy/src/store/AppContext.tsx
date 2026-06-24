@@ -55,17 +55,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }
   }, [progress, isLoading])
 
-  const setScreen = useCallback((s: Screen) => {
-    if (s === 'graal') {
-      const totalKatas = KATAS.length
-      const completedKatas = progress.katasCompleted.filter(id => KATAS.some(k => k.id === id)).length
-      if (totalKatas === 0 || completedKatas !== totalKatas) {
-        // blocked: user hasn't completed all katas
-        return
-      }
-    }
-    setScreenState(s)
-  }, [progress.katasCompleted])
+  const setScreen = useCallback((s: Screen) => setScreenState(s), [])
   const setCurrentKata = useCallback((id: string) => {
     setCurrentKataIdState(id)
     setProgress(p => ({ ...p, currentKataId: id }))
