@@ -5,6 +5,7 @@ All notable changes to this project are documented in this file.
 ## [v0.5.0] - 2026-06-24
 
 ### Added
+- **AI Features** : harness agentique `rewards/harness/` avec 5 skills Rust (development, qualite, securite, refactoring, tests), configuration OpenCode et instructions GitHub Copilot referencees aux dernieres docs Rust.
 - **Academy** : chargement des katas depuis le répertoire `/katas` avec coloration syntaxique CodeMirror.
 - **Academy** : exécution réelle Rust côté serveur via `play.rust-lang.org/execute`.
 - **Academy** : diagnostics de compilation Rust en temps réel dans l'éditeur.
@@ -26,9 +27,10 @@ All notable changes to this project are documented in this file.
 - **CI** : suppression du workflow `labeler` redondant.
 
 ### Resolved Issues
-- #52, #53, #58
+- #52, #53, #58, #62
 
 ### Merged Pull Requests
+- #63 — feat(harness): harness agentique - skills Rust et configs AI
 - #58 — feat: intégration Wllama dans l'assistant Academy Ferris
 - #53 — feat: projet Academy React/Vite avec CI/CD
 - #52 — docs: pack d'instructions docs-sync agent-agnostique
