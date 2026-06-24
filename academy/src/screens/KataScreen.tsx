@@ -106,7 +106,7 @@ export function KataScreen() {
   const [tests, setTests] = useState<Array<{ name: string; pass: boolean }>>([])
   const [output, setOutput] = useState<Array<{ text: string; color: string }>>([])
   const [chat, setChat] = useState<ChatMessage[]>([
-    { role: 'ferris', text: "Salut ! Je suis Ferris 🦀, ton mentor. Lance le code avec ▶ Exécuter, ou demande-moi un indice 💡.", timestamp: Date.now() }
+    { role: 'ferris', text: "Hi! I’m Ferris 🦀, your mentor. Run the code with ▶ Run, or ask me for a hint 💡.", timestamp: Date.now() }
   ])
   const [input, setInput] = useState('')
   const [hintIndex, setHintIndex] = useState(0)
@@ -133,7 +133,7 @@ export function KataScreen() {
     diagnosticsRef.current = []
     alreadyCompleted.current = progress.katasCompleted.includes(kata.id)
     setShowKataModal(true)
-    setChat([{ role: 'ferris', text: `Kata : "${kata.title}". ${kata.difficulty === 'facile' ? 'Un kata de niveau facile — bonne chance !' : 'Un challenge qui va muscler ton ownership !'}`, timestamp: Date.now() }])
+    setChat([{ role: 'ferris', text: `Kata: "${kata.title}". ${kata.difficulty === 'facile' ? 'An easy-level kata — good luck!' : 'A challenge to strengthen your ownership skills!'}`, timestamp: Date.now() }])
   }, [kata.id])
 
   // Scroll chat to bottom
@@ -225,7 +225,7 @@ export function KataScreen() {
       ])
       setRan(false)
       setTests([])
-      setChat(prev => [...prev, { role: 'ferris', text: 'Le compilateur Rust a trouvé des erreurs — elles sont soulignées dans l\'éditeur.', timestamp: Date.now() }])
+      setChat(prev => [...prev, { role: 'ferris', text: 'The Rust compiler found errors — they are highlighted in the editor.', timestamp: Date.now() }])
       setIsCompiling(false)
       return
     }
@@ -269,9 +269,9 @@ export function KataScreen() {
     if (solExecuted) {
       const matchLabel = stdoutMatch ? '✓ identique' : '✗ différent'
       const matchColor = stdoutMatch ? '#8af0c0' : '#ff8a5c'
-      outputLines.push({ text: `   Sortie vs solution : ${matchLabel}`, color: matchColor })
+      outputLines.push({ text: `   Output vs solution: ${matchLabel}`, color: matchColor })
     } else if (kata.solutionCode && kata.solutionCode.trim()) {
-      outputLines.push({ text: '   Sortie solution : (non disponible)', color: '#7f9cc4' })
+      outputLines.push({ text: '   Solution output: (not available)', color: '#7f9cc4' })
     }
     outputLines.push({ text: `   Kata tests: ${newTests.filter(t => t.pass).length}/${newTests.length} passed`, color: allPass ? '#8af0c0' : '#ff8a5c' })
 
@@ -376,10 +376,10 @@ export function KataScreen() {
                 <span className="tag" style={{ color: '#ffd08a', background: 'rgba(255,194,75,.12)' }}>+{kata.xpReward} XP</span>
               </div>
             </div>
-            <button className="btn-ghost" onClick={() => setShowKataModal(true)}>📘 Consignes</button>
-            <button className="btn-ghost" onClick={reset}>↺ Réinitialiser</button>
+            <button className="btn-ghost" onClick={() => setShowKataModal(true)}>📘 Instructions</button>
+            <button className="btn-ghost" onClick={reset}>↺ Reset</button>
             <div style={{ display: 'flex', gap: 8, marginLeft: 'auto' }}>
-            <button className="btn btn--run" onClick={run} disabled={isCompiling}>{isCompiling ? 'Compiling…' : '▶ Exécuter'}</button>
+            <button className="btn btn--run" onClick={run} disabled={isCompiling}>{isCompiling ? 'Compiling…' : '▶ Run'}</button>
             </div>
           </div>
 
@@ -387,7 +387,7 @@ export function KataScreen() {
 
         <div className="editor-output">
           {output.length === 0
-            ? <span style={{ color: '#4a6080' }}>// Prêt — clique ▶ Exécuter (compile + run sur Rust Playground)</span>
+            ? <span style={{ color: '#4a6080' }}>// Ready — click ▶ Run (compile + run on Rust Playground)</span>
             : output.map((o, i) => <div key={i} style={{ color: o.color }}>{o.text}</div>)
           }
         </div>
@@ -402,12 +402,12 @@ export function KataScreen() {
             <div className="ferris-status">
               <span className={`status-dot ${modelReady ? 'status-dot--green' : 'status-dot--yellow'}`} />
               Mentor{modelReady
-                ? ` · prêt · ${getModelInfo().multithread ? getModelInfo().threads + ' threads' : 'mono-thread'}`
+                ? ` · ready · ${getModelInfo().multithread ? getModelInfo().threads + ' threads' : 'single-thread'}`
                 : dlProgress.phase === 'downloading'
-                  ? ` · téléchargement ${dlProgress.pct}%`
+                  ? ` · downloading ${dlProgress.pct}%`
                   : dlProgress.phase === 'error'
-                    ? ' · erreur de chargement'
-                    : ' · téléchargement...'
+                    ? ' · load error'
+                    : ' · downloading...'
               }
             </div>
           </div>
@@ -430,10 +430,10 @@ export function KataScreen() {
         <div className="ferris-actions">
           <label style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6, fontSize: 11, color: 'var(--text-dim)', cursor: 'pointer', userSelect: 'none' }}>
             <input type="checkbox" checked={useKataContext} onChange={e => setUseKataContext(e.target.checked)} disabled={!modelReady} style={{ accentColor: 'var(--blue)' }} />
-            Contexte kata
+          Kata context
           </label>
           <div className="quick-actions">
-            <button className="quick-btn quick-btn--yellow" onClick={hint}>💡 Indice +1</button>
+            <button className="quick-btn quick-btn--yellow" onClick={hint}>💡 Hint +1</button>
           </div>
           <div className="chat-input-row">
             <input
@@ -441,7 +441,7 @@ export function KataScreen() {
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => { if (e.key === 'Enter' && modelReady) send() }}
-              placeholder={modelReady ? "Demande à Ferris…" : "Téléchargement du modèle…"}
+              placeholder={modelReady ? "Ask Ferris…" : "Model downloading…"}
               disabled={!modelReady || isReplying}
             />
             <button className="chat-send" onClick={send} disabled={!modelReady || isReplying}>➤</button>
@@ -462,7 +462,7 @@ export function KataScreen() {
                 <h2 className="kata-title" style={{ marginBottom: 6 }}>{kata.title}</h2>
                 <div className="kata-subtitle">{kata.titleEn} · Kata {kata.number}/{kata.total}</div>
               </div>
-              <button className="btn-ghost" onClick={() => setShowKataModal(false)}>✕ Fermer</button>
+              <button className="btn-ghost" onClick={() => setShowKataModal(false)}>✕ Close</button>
             </div>
 
             <div className="kata-modal-body">
@@ -470,7 +470,7 @@ export function KataScreen() {
 
               <div className="kata-tests-panel" style={{ marginTop: 14 }}>
                 <div className="kata-tests-header">
-                  <span className="mono-label">Tests attendus</span>
+                    <span className="mono-label">Expected tests</span>
                   <span style={{ color: '#7f9cc4', fontWeight: 700, fontSize: 12 }}>{kata.tests.length}</span>
                 </div>
                 <div className="test-list">

@@ -4,6 +4,8 @@ import type { Difficulty } from '../types'
 
 const DIFFICULTY_ORDER: Difficulty[] = ['facile', 'moyen', 'difficile', 'expert']
 
+const DIFF_LABELS: Record<Difficulty, string> = { facile: 'Easy', moyen: 'Medium', difficile: 'Hard', expert: 'Expert' }
+
 function getAccessibleDifficulty(katasCompleted: string[]): Difficulty {
   const done = new Set(katasCompleted)
   const facileIds = KATAS.filter(k => k.difficulty === 'facile').map(k => k.id)
@@ -33,8 +35,8 @@ export function PathScreen() {
   return (
     <div className="path-screen">
       <div className="path-content">
-        <h2 className="screen-title">Parcours</h2>
-        <p className="screen-subtitle">{progress.firstName ? `${progress.firstName}, c` : 'C'}hoisis un kata et commence à coder !</p>
+        <h2 className="screen-title">Path</h2>
+        <p className="screen-subtitle">{progress.firstName ? `${progress.firstName}, ` : ''}choose a kata and start coding!</p>
 
         {DIFFICULTY_ORDER.map((diff, diffIdx) => {
           const katas = KATAS.filter(k => k.difficulty === diff)
@@ -46,7 +48,7 @@ export function PathScreen() {
             <div key={diff} className="path-difficulty-group">
               <div className="path-difficulty-header">
                 <span className={`path-difficulty-badge path-difficulty-badge--${diff}`}>
-                  {diffPassed ? '✓' : unlocked ? '●' : '🔒'} {diff.charAt(0).toUpperCase() + diff.slice(1)}
+                {diffPassed ? '✓' : unlocked ? '●' : '🔒'} {DIFF_LABELS[diff]}
                 </span>
                 <span className="path-difficulty-count">{katas.filter(k => progress.katasCompleted.includes(k.id)).length}/{katas.length}</span>
               </div>
@@ -75,7 +77,7 @@ export function PathScreen() {
                           <div className="path-step-title">{kata.title}</div>
                           <div className="path-step-sub">{kata.concept} · +{kata.xpReward} XP</div>
                         </div>
-                        <button className="btn-ghost" onClick={() => goToKata(kata.id)}>Rouvrir</button>
+                        <button className="btn-ghost" onClick={() => goToKata(kata.id)}>Reopen</button>
                       </div>
                     )
                   }
@@ -94,7 +96,7 @@ export function PathScreen() {
                           {diff}
                         </div>
                       </div>
-                      <span className="btn btn--primary" style={{ padding: '9px 15px', fontSize: 11 }}>Commencer</span>
+                      <span className="btn btn--primary" style={{ padding: '9px 15px', fontSize: 11 }}>Start</span>
                     </button>
                   )
                 })}
@@ -111,8 +113,8 @@ export function PathScreen() {
           >
             <div className="path-graal-icon">🎁</div>
             <div className="path-graal-body">
-              <div className="path-graal-title">À la fin du parcours… une surprise t'attend 🤫</div>
-              <div className="path-graal-desc">Une récompense légendaire, scellée jusqu'à la dernière épreuve. Personne ne sait ce que c'est avant de l'avoir débloquée.</div>
+              <div className="path-graal-title">At the end of the path… a surprise awaits 🤫</div>
+              <div className="path-graal-desc">A legendary reward, sealed until the final challenge. No one knows what it is until it's unlocked.</div>
             </div>
             <span className="btn btn--golden" style={{ padding: '9px 14px', fontSize: 11, whiteSpace: 'nowrap' }}>Voir la quête →</span>
           </button>

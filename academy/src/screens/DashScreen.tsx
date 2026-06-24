@@ -52,19 +52,19 @@ export function DashScreen() {
 
   return (
     <div className="dash-screen">
-      <h2 className="screen-title">Ta progression</h2>
+      <h2 className="screen-title">Your progress</h2>
 
       <div className="dash-grid">
         {/* XP Chart */}
         <div className="dash-card">
-          <div className="dash-card-title">XP / TEMPS</div>
-          <div className="dash-card-sub">+{totalXPWeek} XP cette semaine</div>
+          <div className="dash-card-title">XP / TIME</div>
+          <div className="dash-card-sub">+{totalXPWeek} XP this week</div>
           <XPChartSVG />
         </div>
 
         {/* Mastery bars */}
         <div className="dash-card">
-          <div className="dash-card-title">MAÎTRISE PAR CONCEPT</div>
+          <div className="dash-card-title">MASTERY BY CONCEPT</div>
           <div className="mastery-list">
             {CONCEPTS.map(c => {
               const val = progress.conceptMastery[c.key] ?? 0

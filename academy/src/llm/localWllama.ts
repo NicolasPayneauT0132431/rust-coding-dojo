@@ -7,7 +7,7 @@ const MODEL = {
   file: 'LFM2.5-350M-Q4_K_M.gguf',
 }
 
-const SYSTEM_PROMPT = `Tu es Ferris, le mentor IA du Rust Dojo. Tu aides les apprenants à comprendre Rust avec des explications courtes, pédagogiques et encourageantes. Réponds en français par défaut. Si la question concerne un kata, donne des indices progressifs et n'écris pas la solution complète sauf demande explicite. Appuie-toi sur le contexte du kata, le code actuel et les résultats de tests fournis.`
+const SYSTEM_PROMPT = `You are Ferris, the Rust Dojo AI mentor. Help learners understand Rust with short, educational, and encouraging explanations. Respond in English by default. If the question concerns a kata, give progressive hints and do not write the full solution unless explicitly asked. Rely on the kata context, current code, and provided test results.`
 
 export interface FerrisContext {
   kataTitle: string
@@ -57,7 +57,7 @@ export function preloadModel() {
 
 export async function generateLocalFerrisReply(userMessage: string, context: FerrisContext, onToken?: (token: string) => void, skipContext?: boolean) {
   await ensureModelLoaded()
-  if (!wllama) throw new Error('Le moteur local Ferris est indisponible.')
+  if (!wllama) throw new Error('Local Ferris engine is unavailable.')
 
   const history = skipContext ? [] : buildRecentHistory(context.history ?? [])
   const prompt = skipContext ? userMessage : buildPrompt(userMessage, context)
@@ -81,7 +81,7 @@ export async function generateLocalFerrisReply(userMessage: string, context: Fer
     },
   })
 
-  return reply.trim() || 'Je n’ai pas réussi à produire une réponse exploitable. Essaie de reformuler ta question.'
+  return reply.trim() || 'I could not produce a useful answer. Try rephrasing your question.'
 }
 
 function ensureModelLoaded() {

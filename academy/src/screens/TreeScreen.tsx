@@ -39,10 +39,10 @@ export function TreeScreen() {
   return (
     <div className="tree-screen">
       <div className="tree-canvas-area">
-        <h2 className="screen-title">Arbre de compétences</h2>
+        <h2 className="screen-title">Skill Tree</h2>
         <p className="screen-subtitle">
-          {nodes.filter(n => n.unlocked).length} / {nodes.length} nœuds débloqués ·{' '}
-          {Math.round(nodes.filter(n => n.unlocked).length / nodes.length * 100)}% · clique un nœud débloqué
+          {nodes.filter(n => n.unlocked).length} / {nodes.length} nodes unlocked ·{' '}
+          {Math.round(nodes.filter(n => n.unlocked).length / nodes.length * 100)}% · click an unlocked node
         </p>
 
           <div className="skill-tree-wrapper">
@@ -103,7 +103,7 @@ export function TreeScreen() {
       </div>
 
       <div className="tree-detail-panel">
-        <div className="detail-section-label">DÉTAIL DU NŒUD</div>
+      <div className="detail-section-label">NODE DETAIL</div>
         <div style={{ fontSize: 42, marginBottom: 10 }}>{node.icon}</div>
         <h3 className="detail-node-name">{node.name}</h3>
         <div
@@ -117,8 +117,8 @@ export function TreeScreen() {
           }}
         >
           {node.unlocked
-            ? `${node.katasCompleted === node.katasTotal ? 'Maîtrisé' : 'En cours'} · ${node.katasCompleted}/${node.katasTotal}`
-            : 'Verrouillé'}
+            ? `${node.katasCompleted === node.katasTotal ? 'Mastered' : 'In progress'} · ${node.katasCompleted}/${node.katasTotal}`
+            : 'Locked'}
         </div>
         <p className="detail-node-desc">{node.description}</p>
 
@@ -135,7 +135,7 @@ export function TreeScreen() {
               />
             </div>
             <div style={{ fontSize: 11, color: '#7f9cc4', marginTop: 5, fontFamily: 'JetBrains Mono' }}>
-              {Math.round(node.katasCompleted / node.katasTotal * 100)}% complété
+              {Math.round(node.katasCompleted / node.katasTotal * 100)}% completed
             </div>
           </div>
         )}

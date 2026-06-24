@@ -28,17 +28,17 @@ export function ProfileScreen() {
 
         <div className="profile-info">
           <h2 className="profile-name">
-            {progress.firstName || 'Apprenti'} · <span style={{ color: '#4fd6e0' }}>Niveau {progress.level}</span>
+            {progress.firstName || 'Apprentice'} · <span style={{ color: '#4fd6e0' }}>Level {progress.level}</span>
           </h2>
           <div className="profile-title">
-            Apprentie du Borrow Checker · {progress.xp} XP
+            Borrow Checker Apprentice · {progress.xp} XP
           </div>
         </div>
 
         <div className="profile-stats">
           <div className="stat-pill" style={{ borderColor: 'rgba(255,138,92,.28)', background: 'rgba(255,138,92,.1)' }}>
             <div className="stat-pill-value" style={{ color: '#ff8a5c' }}>{progress.streak}</div>
-            <div className="stat-pill-label" style={{ color: '#ffb499' }}>🔥 streak</div>
+            <div className="stat-pill-label" style={{ color: '#ffb499' }}>🔥 Streak</div>
           </div>
           <div className="stat-pill" style={{ borderColor: 'rgba(74,222,128,.25)', background: 'rgba(74,222,128,.08)' }}>
             <div className="stat-pill-value" style={{ color: '#8af0c0' }}>{progress.katasCompleted.length}</div>
@@ -89,7 +89,7 @@ export function ProfileScreen() {
             🎁
           </div>
           <div className="badge-name" style={{ color: '#ffd08a' }}>??? · surprise</div>
-          <div className="badge-desc" style={{ color: '#ffd08a', opacity: 0.7 }}>À débloquer</div>
+          <div className="badge-desc" style={{ color: '#ffd08a', opacity: 0.7 }}>To unlock</div>
         </button>
       </div>
     </div>

@@ -27,24 +27,24 @@ export function GraalScreen() {
           <div style={{ textAlign: 'center' }}>
             <div className="graal-trophy pop">🏆</div>
             <div style={{ fontFamily: 'JetBrains Mono', fontSize: 11, color: '#8af0c0', letterSpacing: '0.28em', textTransform: 'uppercase', marginTop: 8 }}>
-              Parcours accompli · Niveau Maître
+              Path completed · Master Level
             </div>
             <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 36, color: '#eaf2ff', margin: '10px 0 0' }}>
-              La Forge de Ferris est tienne 🦀
+              Ferris Forge is yours 🦀
             </h2>
             <p style={{ margin: '14px auto 0', maxWidth: 640, fontSize: 15, lineHeight: 1.7, color: '#c4d6ee' }}>
-              Surprise ! Ta récompense est une <b style={{ color: '#9fd0ff' }}>stack agentique Rust complète</b> — qualité de code, lint, sécurité, CI/CD et déploiement — prête à brancher sur n'importe quel harness (MCP, CLI, API).
+              Surprise! Your reward is a <b style={{ color: '#9fd0ff' }}>complete Rust agent stack</b> — code quality, linting, security, CI/CD and deployment — ready to plug into any harness (MCP, CLI, API).
             </p>
           </div>
 
           <div className="forge-agents-grid">
             {[
-              { icon: '🔍', name: 'Agent Qualité', sub: 'SonarQube · quality gate', color: '#3d9bff', desc: 'Couverture, dette technique, code smells, hotspots de sécurité — bloque la PR si le seuil n\'est pas tenu.' },
-              { icon: '📎', name: 'Agent Lint', sub: 'Clippy · rustfmt', color: '#7c5cf0', desc: 'Lint idiomatique, formatage auto, suggestions de réécriture et correctifs appliqués tout seuls.' },
-              { icon: '⚙️', name: 'Agent CI/CD', sub: 'Actions · GitLab · cache', color: '#34c46e', desc: 'Pipelines générés, matrice de build, cache de crates, tests parallèles — zéro YAML à écrire.' },
-              { icon: '🚀', name: 'Agent Déploiement', sub: 'cross-compile · conteneurs · crates.io', color: '#ff8a5c', desc: 'Releases versionnées, binaires multi-cibles, images OCI et publication automatique.' },
-              { icon: '🛡️', name: 'Agent Sécurité', sub: 'cargo audit · deny · supply chain', color: '#f0a830', desc: 'Audit des dépendances, CVE connues, licences interdites et intégrité de la chaîne d\'approvisionnement.' },
-              { icon: '🔌', name: 'Branchable partout', sub: 'MCP · CLI · API REST', color: '#3d9bff', desc: 'Un manifeste, trois interfaces : MCP, CLI et API REST. Connecte la forge à ton harness existant en une commande.', special: true }
+              { icon: '🔍', name: 'Quality Agent', sub: 'SonarQube · quality gate', color: '#3d9bff', desc: 'Coverage, technical debt, code smells, security hotspots — blocks PRs if thresholds are not met.' },
+              { icon: '📎', name: 'Lint Agent', sub: 'Clippy · rustfmt', color: '#7c5cf0', desc: 'Idiomatic linting, auto-formatting, rewrite suggestions and auto-fixes.' },
+              { icon: '⚙️', name: 'CI/CD Agent', sub: 'Actions · GitLab · cache', color: '#34c46e', desc: 'Generated pipelines, build matrix, crate caching, parallel tests — zero YAML to write.' },
+              { icon: '🚀', name: 'Deployment Agent', sub: 'cross-compile · containers · crates.io', color: '#ff8a5c', desc: 'Versioned releases, multi-target binaries, OCI images and automatic publishing.' },
+              { icon: '🛡️', name: 'Security Agent', sub: 'cargo audit · deny · supply chain', color: '#f0a830', desc: 'Dependency audits, known CVEs, disallowed licenses and supply-chain integrity checks.' },
+              { icon: '🔌', name: 'Works everywhere', sub: 'MCP · CLI · API REST', color: '#3d9bff', desc: 'One manifest, three interfaces: MCP, CLI and REST API. Connect the forge to your harness in one command.', special: true }
             ].map((agent, i) => (
               <div key={i} className={`forge-agent-card ${agent.special ? 'forge-agent-card--special' : ''}`}>
                 <div className="forge-agent-icon" style={{ background: agent.color }}>{agent.icon}</div>
@@ -56,7 +56,7 @@ export function GraalScreen() {
           </div>
 
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginTop: 32, flexWrap: 'wrap' }}>
-            <a className="btn btn--primary" href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/tree/main/rewards/harness" target="_blank" rel="noopener noreferrer">Récupérer la config Harness</a>
+            <a className="btn btn--primary" href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/tree/main/rewards/harness" target="_blank" rel="noopener noreferrer">Get Harness config</a>
           </div>
         </div>
       </div>
@@ -79,17 +79,17 @@ export function GraalScreen() {
         </div>
 
         <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 32, color: '#eaf2ff', margin: '0 0 14px' }}>
-          Une récompense légendaire t'attend
+        A legendary reward awaits
         </h2>
         <p style={{ margin: '0 auto', maxWidth: 560, fontSize: 15, lineHeight: 1.7, color: '#b8cce6' }}>
-          Personne ne sait exactement ce qui se cache derrière le sceau — seuls ceux qui ont terminé les cinq épreuves du parcours l'ont vu. On raconte que ça{' '}
-          <b style={{ color: '#ffd08a' }}>change la façon d'écrire du Rust pour toujours</b>.
-          À toi de le découvrir. 🤫
+        Nobody knows exactly what lies behind the seal — only those who have completed the five challenges of the path have seen it. Rumor has it it{' '}
+        <b style={{ color: '#ffd08a' }}>changes the way you write Rust forever</b>.
+        Discover it for yourself. 🤫
         </p>
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, margin: '28px 0 10px', flexWrap: 'wrap' }}>
-          <span style={{ fontWeight: 800, fontSize: 13, color: '#9fd0ff' }}>Sceau brisé à {questPct}%</span>
-          <span style={{ fontWeight: 700, fontSize: 13, color: '#7f9cc4' }}>· {questDone}/5 épreuves</span>
+        <span style={{ fontWeight: 800, fontSize: 13, color: '#9fd0ff' }}>Seal progress {questPct}%</span>
+        <span style={{ fontWeight: 700, fontSize: 13, color: '#7f9cc4' }}>· {questDone}/5 challenges</span>
         </div>
         <div className="graal-progress-track">
           <div className="graal-progress-fill" style={{ width: `${questPct}%` }} />
@@ -116,14 +116,14 @@ export function GraalScreen() {
                 <div style={{ fontSize: 12, color: '#7f9cc4' }}>{ch.sub}</div>
               </div>
               <span style={{ fontWeight: 700, fontSize: 11, color: ch.done ? '#8af0c0' : '#6f8cb4' }}>
-                {ch.done ? '✓ Complété' : 'À compléter'}
+              {ch.done ? '✓ Completed' : 'To complete'}
               </span>
             </div>
           ))}
         </div>
 
         <div style={{ marginTop: 32 }}>
-          <span style={{ fontSize: 13, color: '#6f8cb4' }}>Complète tous les katas pour débloquer la récompense finale.</span>
+        <span style={{ fontSize: 13, color: '#6f8cb4' }}>Complete all katas to unlock the final reward.</span>
         </div>
       </div>
     </div>

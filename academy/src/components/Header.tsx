@@ -3,9 +3,9 @@ import type { Screen } from '../types'
 import { KATAS } from '../data/katas'
 
 const NAV_ITEMS_BASE: Array<{ key: Screen; icon: string; label: string }> = [
-  { key: 'path', icon: '🧭', label: 'Parcours' },
+  { key: 'path', icon: '🧭', label: 'Path' },
   { key: 'kata', icon: '📝', label: 'Katas' },
-  { key: 'tree', icon: '🌳', label: 'Arbres de compétences' },
+  { key: 'tree', icon: '🌳', label: 'Skill Trees' },
 ]
 
 export function Header() {
@@ -38,10 +38,10 @@ export function Header() {
           className={`nav-btn nav-btn--graal ${screen === 'graal' ? 'nav-btn--graal-active' : ''} ${progress.graalUnlocked ? '' : 'shine'}`}
           onClick={() => allKatasCompleted && setScreen('graal')}
           disabled={!allKatasCompleted}
-          title={allKatasCompleted ? 'Le Graal' : 'Terminez tous les katas pour débloquer'}
+          title={allKatasCompleted ? 'The Grail' : 'Complete all katas to unlock'}
         >
           <span>{allKatasCompleted ? graalIcon : '🔒'}</span>
-          <span>Le Graal</span>
+          <span>The Grail</span>
         </button>
       </nav>
 
@@ -49,7 +49,7 @@ export function Header() {
 
         <div className="xp-bar-container">
           <div className="xp-bar-labels">
-            <span>Progression</span>
+            <span>Progress</span>
             <span className="xp-bar-sub">{completedKatas} / {totalKatas}</span>
           </div>
           <div className="xp-bar-track">
