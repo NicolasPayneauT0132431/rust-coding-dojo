@@ -18,9 +18,26 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: academy
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: academy/package-lock.json
+      - run: npm ci
+      - run: npm test
+
   build:
     name: Build
     runs-on: ubuntu-latest
+    needs: test
     defaults:
       run:
         working-directory: academy
